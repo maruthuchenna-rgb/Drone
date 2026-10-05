@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="404 Page Not Found - Stackly Drone Services">
+  <title>404 - Page Not Found | Stackly Drone Services</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="asset/css/style.css">
+</head>
+<body class="page-404-body">
+
+  <!-- Left Royal Blue Vertical Accent Strip (Matching Screenshot) -->
+  <div class="page-404-left-bar" aria-hidden="true"></div>
+
+  <!-- Main 404 Layout Wrapper -->
+  <main class="page-404-main">
+    <div class="page-404-container">
+      
+      <!-- Top Section: 2 Columns (Text on Left, 404 Drone Visual on Right) -->
+      <div class="page-404-hero-grid">
+        
+        <!-- Left Text Column -->
+        <div class="page-404-text-col">
+          <span class="page-404-subtitle">404 ERROR</span>
+          
+          <h1 class="page-404-title">
+            <span class="page-404-title-dark">Oops!</span>
+            <span class="page-404-title-blue">Page Not Found</span>
+          </h1>
+
+          <p class="page-404-desc">
+            The page you're looking for might have been removed, had its name changed, or is temporarily unavailable.
+          </p>
+
+          <div class="page-404-btn-group">
+            <!-- Go Back Home Button -->
+            <a href="index.html" class="btn-404-home">
+              <span>Go Back Home</span>
+              <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+
+            <!-- Back to Previous Page Button -->
+            <button type="button" class="btn-404-back" onclick="window.history.length > 1 ? window.history.back() : window.location.href='index.html'">
+              <svg class="btn-arrow-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Back to Previous</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Visual Column (404 Numerals + Drone + Trajectory + Mountains) -->
+        <div class="page-404-visual-col">
+          <div class="page-404-scene">
+            
+            <!-- Soft Clouds in Background -->
+            <div class="cloud-item cloud-top-left" aria-hidden="true"></div>
+            <div class="cloud-item cloud-top-right" aria-hidden="true"></div>
+            <div class="cloud-item cloud-mid-bottom" aria-hidden="true"></div>
+
+            <!-- Giant 404 Numeral in Pastel Blue -->
+            <div class="page-404-big-digits" aria-hidden="true">
+              <span>4</span>
+              <span>0</span>
+              <span>4</span>
+            </div>
+
+            <!-- Dashed Curved Flight Path SVG -->
+            <svg class="flight-path-svg" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M430 30 C340 40 310 120 380 170 C440 210 320 280 230 260 C150 240 100 290 120 330 C140 370 240 360 300 370" 
+                    stroke="#3b82f6" 
+                    stroke-width="1.8" 
+                    stroke-dasharray="5 5" 
+                    stroke-linecap="round" 
+                    opacity="0.85"/>
+            </svg>
+
+            <!-- Paper Plane Icon on Top Right -->
+            <div class="paper-plane-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </div>
+
+            <!-- Flying White Quadcopter Drone -->
+            <div class="floating-drone-wrap">
+              <img src="asset/images/404-drone.webp" alt="Flying Drone" class="drone-404-img">
+            </div>
+
+            <!-- Layered Mountains at Bottom Right -->
+            <div class="mountains-wrap" aria-hidden="true">
+              <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Mountain Back Layer -->
+                <polygon points="0,180 120,60 220,180" fill="#cfe2fc"/>
+                <!-- Mountain Front Main Layer -->
+                <polygon points="80,180 180,30 320,180" fill="#b9d6fb"/>
+                <!-- Mountain Shading Ridge -->
+                <polygon points="180,30 180,180 80,180" fill="#c7defd"/>
+                <!-- Summit Snow Cap -->
+                <polygon points="180,30 168,54 180,62 192,50" fill="#ffffff" opacity="0.8"/>
+              </svg>
+
+              <!-- Map Pin on Mountain Summit -->
+              <div class="mountain-pin-wrap">
+                <svg viewBox="0 0 24 24" fill="#2563eb" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Quick Navigation Cards (4 Columns with Dividers) -->
+      <div class="page-404-bottom-cards">
+        
+        <!-- Card 1: Back to Home -->
+        <a href="index.html" class="quick-nav-card">
+          <div class="quick-nav-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </div>
+          <h3 class="quick-nav-title">Back to Home</h3>
+          <p class="quick-nav-desc">Return to our homepage and explore more.</p>
+        </a>
+
+        <!-- Card 2: Explore Services -->
+        <p  class="quick-nav-card">
+          <div class="quick-nav-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
+          </div>
+          <h3 class="quick-nav-title">Explore Services</h3>
+          <p class="quick-nav-desc">Discover what we have to offer.</p>
+        </p>
+
+        <!-- Card 3: Read Our Blog -->
+        <p class="quick-nav-card">
+          <div class="quick-nav-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h3 class="quick-nav-title">Read Our Blog</h3>
+          <p class="quick-nav-desc">Get the latest insights and updates.</p>
+        </p>
+
+        <!-- Card 4: Contact Us -->
+        <p  class="quick-nav-card">
+          <div class="quick-nav-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <h3 class="quick-nav-title">Contact Us</h3>
+          <p class="quick-nav-desc">We're here to help — get in touch.</p>
+        </p>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="asset/js/main.js"></script>
+</body>
+</html>

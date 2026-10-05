@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stackly Enterprise Fleet Manager Dashboard - Autonomous UAV missions, telemetry, and fleet health">
+  <title>Fleet Manager Dashboard | Stackly Drone Services</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="asset/css/style.css">
+</head>
+<body class="dashboard-body">
+
+  <!-- Mobile Top Bar for Dashboards -->
+  <div class="dash-mobile-header">
+    <a href="index.html" class="dash-brand">
+      <img src="asset/images/stackly_.webp" alt="Stackly" class="dash-logo-img">
+    </a>
+    <div class="dash-mobile-right">
+      <span class="dash-role-badge">Fleet Manager</span>
+      <button type="button" class="dash-mobile-logout" onclick="handleLogout()" title="Log Out" aria-label="Log Out">
+        <svg class="logout-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+      </button>
+      <button class="dash-mobile-toggle" id="dashMobileToggle" aria-label="Toggle Dashboard Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Sidebar Navigation (5 Tab Options) -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <div class="dash-sidebar-header">
+      <a href="index.html" class="dash-brand">
+        <img src="asset/images/stackly_.webp" alt="Stackly" class="dash-logo-img">
+      </a>
+      <span class="dash-role-badge">Fleet Manager</span>
+    </div>
+
+    <!-- 5 Dash Bar Options -->
+    <nav class="dash-nav" aria-label="Dashboard Tabs">
+      <ul class="dash-nav-list">
+        <li>
+          <button type="button" class="dash-tab-btn active" data-tab="tab-overview">
+            <span class="dash-nav-icon">📊</span>
+            <span class="dash-nav-text">Fleet Overview</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dash-tab-btn" data-tab="tab-squadron">
+            <span class="dash-nav-icon">🚁</span>
+            <span class="dash-nav-text">UAV Squadron</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dash-tab-btn" data-tab="tab-dispatch">
+            <span class="dash-nav-icon">🛰️</span>
+            <span class="dash-nav-text">Mission Dispatch</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dash-tab-btn" data-tab="tab-telemetry">
+            <span class="dash-nav-icon">⚡</span>
+            <span class="dash-nav-text">LiDAR Telemetry</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dash-tab-btn" data-tab="tab-safety">
+            <span class="dash-nav-icon">🛡️</span>
+            <span class="dash-nav-text">Safety &amp; Compliance</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Sidebar Footer with Dynamic User Info -->
+    <div class="dash-sidebar-footer">
+      <div class="dash-user-profile">
+        <div class="dash-avatar" id="dashUserAvatar">FM</div>
+        <div class="dash-user-info">
+          <span class="dash-user-name" id="dashUserName">Alex Morgan</span>
+          <span class="dash-user-email" id="dashUserEmail">alex.morgan@stackly.co</span>
+        </div>
+      </div>
+      <button type="button" class="dash-logout-btn" onclick="handleLogout()" title="Log Out">
+        <svg class="logout-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+        <span>Log Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <div class="dash-main-wrap">
+    
+    <!-- Top Bar -->
+    <header class="dash-topbar">
+      <div class="dash-topbar-left">
+        <div class="dash-greeting-row">
+          <span class="dash-welcome-tag">Welcome back,</span>
+          <span class="dash-user-highlight" id="dashTopUserName">Alex Morgan</span>
+        </div>
+        <span class="dash-status-pill"><span class="pulse-green"></span> 24 Drones Active Airborne • 4 on Standby</span>
+      </div>
+      <div class="dash-topbar-right">
+       
+        <button type="button" class="btn-dash-logout" onclick="handleLogout()" title="Log Out">
+          <svg class="logout-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Dashboard Content Container -->
+    <main class="dash-content">
+      
+      <!-- ===================================================================
+           TAB 1: FLEET OVERVIEW
+           =================================================================== -->
+      <section class="dash-tab-pane active" id="tab-overview">
+        
+        <!-- 4 Stat Metrics Grid -->
+        <div class="dash-stats-grid">
+          <div class="dash-stat-card">
+            <div class="dash-stat-header">
+              <span class="dash-stat-label">Active Airborne Flights</span>
+              <span class="dash-stat-badge-green">+18%</span>
+            </div>
+            <div class="dash-stat-val">24 / 28</div>
+            <p class="dash-stat-sub">UAVs currently on aerial missions</p>
+          </div>
+
+          <div class="dash-stat-card">
+            <div class="dash-stat-header">
+              <span class="dash-stat-label">Total Flight Hours Today</span>
+              <span class="dash-stat-badge-blue">Live Sync</span>
+            </div>
+            <div class="dash-stat-val">142.8 hrs</div>
+            <p class="dash-stat-sub">Across 6 commercial flight zones</p>
+          </div>
+
+          <div class="dash-stat-card">
+            <div class="dash-stat-header">
+              <span class="dash-stat-label">Telemetry Data Ingested</span>
+              <span class="dash-stat-badge-purple">846 GB</span>
+            </div>
+            <div class="dash-stat-val">99.8% Uplink</div>
+            <p class="dash-stat-sub">LiDAR, Thermal &amp; 4K multispectral</p>
+          </div>
+
+          <div class="dash-stat-card">
+            <div class="dash-stat-header">
+              <span class="dash-stat-label">Squadron Health Index</span>
+              <span class="dash-stat-badge-green">Optimal</span>
+            </div>
+            <div class="dash-stat-val">98.4%</div>
+            <p class="dash-stat-sub">Propulsion &amp; sensor calibrations passed</p>
+          </div>
+        </div>
+
+        <!-- Main Operational Radar & Active Fleet Table -->
+        <div class="dash-two-col-grid">
+          
+          <!-- Live Airspace Radar Widget -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h2 class="dash-card-title">Live Airspace Geofence Radar</h2>
+              <span class="dash-card-tag">GPS Locked: 18 Sats</span>
+            </div>
+            <div class="dash-radar-screen">
+              <img src="asset/images/services-map-screen.webp" alt="Live Airspace Radar" class="dash-radar-img">
+              <div class="radar-telemetry-overlay">
+                <div class="telem-chip"><strong>UAV-01</strong> Alt: 120m | Spd: 45km/h | Bat: 88%</div>
+                <div class="telem-chip"><strong>UAV-04</strong> Alt: 85m | Spd: 32km/h | Bat: 74%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fleet Squad Status List -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h2 class="dash-card-title">Active Squadron Telemetry</h2>
+              <button type="button" class="dash-view-all" onclick="switchDashTab('tab-squadron')">View All (28) →</button>
+            </div>
+            <div class="fleet-table-wrap">
+              <table class="fleet-table">
+                <thead>
+                  <tr>
+                    <th>Unit ID</th>
+                    <th>Model</th>
+                    <th>Mission</th>
+                    <th>Status</th>
+                    <th>Battery</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>STK-01</strong></td>
+                    <td>Mavic 3 Enterprise</td>
+                    <td>Pipeline Inspection</td>
+                    <td><span class="status-chip active">Airborne</span></td>
+                    <td><strong>88%</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>STK-04</strong></td>
+                    <td>Matrice 350 RTK</td>
+                    <td>Precision Agriculture</td>
+                    <td><span class="status-chip active">Airborne</span></td>
+                    <td><strong>74%</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>STK-09</strong></td>
+                    <td>Inspire 3 8K</td>
+                    <td>Media Broadcast</td>
+                    <td><span class="status-chip warning">RTH Return</span></td>
+                    <td><strong>29%</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>STK-12</strong></td>
+                    <td>Mavic 3 Thermal</td>
+                    <td>Public Safety Patrol</td>
+                    <td><span class="status-chip active">Airborne</span></td>
+                    <td><strong>91%</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>STK-18</strong></td>
+                    <td>Phantom 4 RTK</td>
+                    <td>Survey Standby</td>
+                    <td><span class="status-chip idle">Standby</span></td>
+                    <td><strong>100%</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ===================================================================
+           TAB 2: UAV SQUADRON FLEET INVENTORY
+           =================================================================== -->
+      <section class="dash-tab-pane" id="tab-squadron">
+        <div class="dash-pane-header">
+          <div>
+            <h2 class="dash-pane-title">UAV Fleet Squadron Inventory</h2>
+            <p class="dash-pane-desc">Real-time status, hardware diagnostics, and payload sensor health across all 28 units</p>
+          </div>
+          <button type="button" class="btn-dash-action-solid">+ Register New Drone</button>
+        </div>
+
+        <div class="squadron-cards-grid">
+          
+          <!-- Drone Card 1 -->
+          <div class="drone-unit-card">
+            <div class="drone-card-top">
+              <div class="drone-unit-id">STK-01 • Heavy Lift</div>
+              <span class="status-chip active">Active Airborne</span>
+            </div>
+            <h3 class="drone-unit-name">Mavic 3 Enterprise RTK</h3>
+            <p class="drone-unit-meta">Assigned Pilot: Capt. Ryan Davis | Sector 4B</p>
+            <div class="drone-meter-row">
+              <span>Battery: <strong>88% (29 min rem.)</strong></span>
+              <span>Altitude: <strong>120m</strong></span>
+            </div>
+            <div class="drone-card-actions">
+              <button type="button" class="btn-drone-action">View Telemetry</button>
+              <button type="button" class="btn-drone-action secondary">Recall</button>
+            </div>
+          </div>
+
+          <!-- Drone Card 2 -->
+          <div class="drone-unit-card">
+            <div class="drone-card-top">
+              <div class="drone-unit-id">STK-04 • Survey Industrial</div>
+              <span class="status-chip active">Active Airborne</span>
+            </div>
+            <h3 class="drone-unit-name">Matrice 350 RTK LiDAR</h3>
+            <p class="drone-unit-meta">Assigned Pilot: Elena Rostova | Sector 12A</p>
+            <div class="drone-meter-row">
+              <span>Battery: <strong>74% (22 min rem.)</strong></span>
+              <span>Altitude: <strong>85m</strong></span>
+            </div>
+            <div class="drone-card-actions">
+              <button type="button" class="btn-drone-action">View Telemetry</button>
+              <button type="button" class="btn-drone-action secondary">Recall</button>
+            </div>
+          </div>
+
+          <!-- Drone Card 3 -->
+          <div class="drone-unit-card">
+            <div class="drone-card-top">
+              <div class="drone-unit-id">STK-09 • Cinema 8K</div>
+              <span class="status-chip warning">Returning to Base</span>
+            </div>
+            <h3 class="drone-unit-name">Inspire 3 Cinema RAW</h3>
+            <p class="drone-unit-meta">Assigned Pilot: Marcus Vance | Downtown Zone</p>
+            <div class="drone-meter-row">
+              <span>Battery: <strong>29% (8 min rem.)</strong></span>
+              <span>Altitude: <strong>45m</strong></span>
+            </div>
+            <div class="drone-card-actions">
+              <button type="button" class="btn-drone-action">View Telemetry</button>
+              <button type="button" class="btn-drone-action secondary">Auto-Land</button>
+            </div>
+          </div>
+
+          <!-- Drone Card 4 -->
+          <div class="drone-unit-card">
+            <div class="drone-card-top">
+              <div class="drone-unit-id">STK-12 • Thermal Emergency</div>
+              <span class="status-chip active">Active Airborne</span>
+            </div>
+            <h3 class="drone-unit-name">Mavic 3 Dual Thermal Sensor</h3>
+            <p class="drone-unit-meta">Assigned Pilot: Sarah Lin | Rescue Grid 7</p>
+            <div class="drone-meter-row">
+              <span>Battery: <strong>91% (34 min rem.)</strong></span>
+              <span>Altitude: <strong>95m</strong></span>
+            </div>
+            <div class="drone-card-actions">
+              <button type="button" class="btn-drone-action">View Telemetry</button>
+              <button type="button" class="btn-drone-action secondary">Recall</button>
+            </div>
+          </div>
+
+          <!-- Drone Card 5 -->
+          <div class="drone-unit-card">
+            <div class="drone-card-top">
+              <div class="drone-unit-id">STK-18 • Photogrammetry</div>
+              <span class="status-chip idle">Hangar Standby</span>
+            </div>
+            <h3 class="drone-unit-name">Phantom 4 RTK Multispectral</h3>
+            <p class="drone-unit-meta">Standby Hangar Bay 2 | Ready for Dispatch</p>
+            <div class="drone-meter-row">
+              <span>Battery: <strong>100% (Charged)</strong></span>
+              <span>Altitude: <strong>0m</strong></span>
+            </div>
+            <div class="drone-card-actions">
+              <button type="button" class="btn-drone-action">Deploy Unit</button>
+              <button type="button" class="btn-drone-action secondary">Diagnostics</button>
+            </div>
+          </div>
+
+          <!-- Drone Card 6 -->
+          <div class="drone-unit-card">
+            <div class="drone-card-top">
+              <div class="drone-unit-id">STK-22 • Security Patrol</div>
+              <span class="status-chip idle">Docking Station</span>
+            </div>
+            <h3 class="drone-unit-name">Stackly S-900 Autonomous Pod</h3>
+            <p class="drone-unit-meta">Charging Base Alpha | Auto-Recharge</p>
+            <div class="drone-meter-row">
+              <span>Battery: <strong>95% (Charging)</strong></span>
+              <span>Altitude: <strong>0m</strong></span>
+            </div>
+            <div class="drone-card-actions">
+              <button type="button" class="btn-drone-action">Deploy Unit</button>
+              <button type="button" class="btn-drone-action secondary">Diagnostics</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           TAB 3: MISSION DISPATCHER
+           =================================================================== -->
+      <section class="dash-tab-pane" id="tab-dispatch">
+        <div class="dash-pane-header">
+          <div>
+            <h2 class="dash-pane-title">Autonomous Mission Dispatcher</h2>
+            <p class="dash-pane-desc">Schedule, corridor geofence, and deploy automated aerial inspection flight plans</p>
+          </div>
+          <button type="button" class="btn-dash-action-solid">+ Dispatch New Mission</button>
+        </div>
+
+        <div class="dash-two-col-grid">
+          
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Active &amp; Scheduled Missions</h3>
+              <span class="dash-card-tag">4 In Progress</span>
+            </div>
+            <div class="fleet-table-wrap">
+              <table class="fleet-table">
+                <thead>
+                  <tr>
+                    <th>Mission Name</th>
+                    <th>Target Zone</th>
+                    <th>UAV Unit</th>
+                    <th>Progress</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Corridor Survey #412</strong></td>
+                    <td>High-Voltage Line 4</td>
+                    <td>STK-01</td>
+                    <td><strong>68%</strong></td>
+                    <td><span class="status-chip active">Executing</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Canopy Biomass Scan</strong></td>
+                    <td>Oak Valley Agri Field</td>
+                    <td>STK-04</td>
+                    <td><strong>82%</strong></td>
+                    <td><span class="status-chip active">Executing</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Solar Thermal Audit</strong></td>
+                    <td>Mojave Array Site C</td>
+                    <td>STK-12</td>
+                    <td><strong>45%</strong></td>
+                    <td><span class="status-chip active">Executing</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Offshore Wind Blade Scan</strong></td>
+                    <td>North Bay Turbines</td>
+                    <td>STK-09</td>
+                    <td><strong>95%</strong></td>
+                    <td><span class="status-chip warning">Finalizing</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Rapid Mission Dispatch Console</h3>
+            </div>
+            <div class="dispatch-form-body">
+              <div class="login-input-group">
+                <label class="login-field-label">Mission Category</label>
+                <select class="contact-select-field">
+                  <option>Powerline &amp; Infrastructure Inspection</option>
+                  <option>Precision Agricultural NDVI Mapping</option>
+                  <option>Thermal Solar Farm Inspection</option>
+                  <option>Public Safety &amp; Emergency Search</option>
+                </select>
+              </div>
+              <div class="login-input-group">
+                <label class="login-field-label">Target Geofence Coordinates</label>
+                <input type="text" class="login-field-input" value="40.7447° N, 73.9485° W (Radius: 2.5 km)">
+              </div>
+              <div class="login-input-group">
+                <label class="login-field-label">Flight Altitude (AGL)</label>
+                <input type="text" class="login-field-input" value="115 meters (FAA Compliant)">
+              </div>
+              <button type="button" class="btn-login-action" onclick="alert('Mission Plan Authorized and Broadcasted to Squadron!')">🚀 Authorize &amp; Launch UAV Mission</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           TAB 4: SENSOR & LIDAR TELEMETRY
+           =================================================================== -->
+      <section class="dash-tab-pane" id="tab-telemetry">
+        <div class="dash-pane-header">
+          <div>
+            <h2 class="dash-pane-title">LiDAR &amp; Multispectral Sensor Telemetry</h2>
+            <p class="dash-pane-desc">Live 3D point cloud elevation models, thermal heat signatures, and high-bandwidth optical feeds</p>
+          </div>
+          <span class="dash-status-pill"><span class="pulse-green"></span> Sensor Stream: 48.2 MB/s Stable</span>
+        </div>
+
+        <div class="dash-two-col-grid">
+          
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Live 3D LiDAR Point Cloud Elevation Map</h3>
+              <span class="dash-card-tag">Resolution: 1.2 cm/px</span>
+            </div>
+            <div class="dash-radar-screen">
+              <img src="asset/images/dash-lidar-map.webp" alt="LiDAR 3D Point Cloud" class="dash-radar-img">
+              <div class="radar-telemetry-overlay">
+                <div class="telem-chip">Elevation: +142m MSL</div>
+                <div class="telem-chip">Density: 320 pts/m²</div>
+                <div class="telem-chip">NDVI Index: 0.74 Healthy</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Sensor Calibration &amp; Spectrum Metrics</h3>
+            </div>
+            <div class="pilot-controls-body">
+              <div class="sensor-metric-row">
+                <span class="sensor-name">LiDAR Laser Wavelength:</span>
+                <span class="sensor-val">905 nm Class 1 Eye-Safe</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Thermal Sensor Temperature Range:</span>
+                <span class="sensor-val">-20°C to +550°C (Accuracy ±2°C)</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Optical Gimbal Resolution:</span>
+                <span class="sensor-val">4K UHD @ 60 FPS HDR 10-Bit</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">IMU Acceleration Variance:</span>
+                <span class="sensor-val">0.002 g (Rock Solid)</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Cloud Storage Synced:</span>
+                <span class="sensor-val">846.4 GB / 1000 GB Allocated</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           TAB 5: SAFETY & COMPLIANCE
+           =================================================================== -->
+      <section class="dash-tab-pane" id="tab-safety">
+        <div class="dash-pane-header">
+          <div>
+            <h2 class="dash-pane-title">Airspace Safety &amp; FAA Part 107 Compliance</h2>
+            <p class="dash-pane-desc">Automated maintenance logs, NOTAM airspace restrictions, geofence authorizations, and battery cycle health</p>
+          </div>
+          <span class="dash-stat-badge-green">FAA Certified 100%</span>
+        </div>
+
+        <div class="dash-two-col-grid">
+          
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Real-Time Airspace Safety Checklist</h3>
+            </div>
+            <div class="pilot-controls-body">
+              <div class="waypoint-list">
+                <div class="waypoint-item completed">
+                  <span class="wp-icon">✓</span>
+                  <span class="wp-title">FAA LAANC Airspace Authorization</span>
+                  <span class="wp-alt">Class D Clear</span>
+                </div>
+                <div class="waypoint-item completed">
+                  <span class="wp-icon">✓</span>
+                  <span class="wp-title">Remote ID Broadcast Signal</span>
+                  <span class="wp-alt">Active All 24 Units</span>
+                </div>
+                <div class="waypoint-item completed">
+                  <span class="wp-icon">✓</span>
+                  <span class="wp-title">360° Vision Obstacle Avoidance</span>
+                  <span class="wp-alt">Operational</span>
+                </div>
+                <div class="waypoint-item completed">
+                  <span class="wp-icon">✓</span>
+                  <span class="wp-title">Geofence Emergency Return-To-Home</span>
+                  <span class="wp-alt">Set @ 20% Battery</span>
+                </div>
+                <div class="waypoint-item completed">
+                  <span class="wp-icon">✓</span>
+                  <span class="wp-title">Battery Health Calibrations</span>
+                  <span class="wp-alt">Passed 28/28</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Scheduled Fleet Maintenance Log</h3>
+            </div>
+            <div class="fleet-table-wrap">
+              <table class="fleet-table">
+                <thead>
+                  <tr>
+                    <th>Drone Unit</th>
+                    <th>Service Type</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>STK-01</strong></td>
+                    <td>Rotor Motor Bearing Check</td>
+                    <td>In 14 Days</td>
+                    <td><span class="status-chip active">Good</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>STK-04</strong></td>
+                    <td>LiDAR Sensor Calibration</td>
+                    <td>In 28 Days</td>
+                    <td><span class="status-chip active">Good</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>STK-09</strong></td>
+                    <td>Battery Cycle Replacement</td>
+                    <td>In 3 Days</td>
+                    <td><span class="status-chip warning">Upcoming</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>STK-18</strong></td>
+                    <td>Full Airframe Inspection</td>
+                    <td>Completed Today</td>
+                    <td><span class="status-chip active">Verified</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Interactive 5-Tab Navigation Script & User Display -->
+  <script>
+    function switchDashTab(tabId) {
+      // Deactivate all tab buttons
+      document.querySelectorAll('.dash-tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+      });
+      // Deactivate all tab content panes
+      document.querySelectorAll('.dash-tab-pane').forEach(pane => {
+        pane.classList.toggle('active', pane.id === tabId);
+      });
+      // Close mobile menu if open
+      const sidebar = document.getElementById('dashSidebar');
+      if (sidebar) sidebar.classList.remove('mobile-open');
+    }
+
+    // Attach click listeners to all 5 tab buttons
+    const sidebar = document.getElementById('dashSidebar');
+    document.querySelectorAll('.dash-tab-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const tabId = this.getAttribute('data-tab');
+        switchDashTab(tabId);
+        if (sidebar && window.innerWidth <= 992) {
+          sidebar.classList.remove('mobile-open');
+        }
+      });
+    });
+
+    // Mobile Hamburger Toggle
+    const mobileToggle = document.getElementById('dashMobileToggle');
+    if (mobileToggle && sidebar) {
+      mobileToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        sidebar.classList.toggle('mobile-open');
+      });
+
+      document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 992 && sidebar.classList.contains('mobile-open')) {
+          if (!sidebar.contains(e.target) && !mobileToggle.contains(e.target)) {
+            sidebar.classList.remove('mobile-open');
+          }
+        }
+      });
+    }
+
+    // Dynamically display User Email and Name from Login / Signup
+    document.addEventListener('DOMContentLoaded', function() {
+      const storedName = localStorage.getItem('stackly_user_name');
+      const storedEmail = localStorage.getItem('stackly_user_email');
+
+      const nameToDisplay = storedName || 'Alex Morgan';
+      const emailToDisplay = storedEmail || 'alex.morgan@stackly.co';
+
+      const userNameEl = document.getElementById('dashUserName');
+      const topUserNameEl = document.getElementById('dashTopUserName');
+      const userEmailEl = document.getElementById('dashUserEmail');
+      const userAvatarEl = document.getElementById('dashUserAvatar');
+
+      if (userNameEl) userNameEl.textContent = nameToDisplay;
+      if (topUserNameEl) topUserNameEl.textContent = nameToDisplay;
+      if (userEmailEl) userEmailEl.textContent = emailToDisplay;
+
+      if (userAvatarEl && nameToDisplay) {
+        const initials = nameToDisplay.split(' ').map(n => n.charAt(0)).join('').substring(0, 2).toUpperCase();
+        userAvatarEl.textContent = initials || 'FM';
+      }
+    });
+
+    // Robust Logout Functionality
+    function handleLogout() {
+      if (confirm('Are you sure you want to log out of your Stackly dashboard?')) {
+        localStorage.removeItem('stackly_user_name');
+        localStorage.removeItem('stackly_user_email');
+        localStorage.removeItem('stackly_user_role');
+        window.location.href = 'login.html';
+      }
+    }
+  </script>
+
+  <!-- Main JavaScript -->
+  <script src="asset/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stackly - Drone Services (Emerging Industries)</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="asset/css/style.css">
+</head>
+<body>
+
+  <!-- ===================================================================
+       PRELOADER / FLIGHT INITIALIZATION HUD (Theme-Related Drone Animation)
+       =================================================================== -->
+  <div class="preloader-overlay" id="sitePreloader">
+    <div class="preloader-backdrop-effects" aria-hidden="true">
+      <div class="preloader-grid-lines"></div>
+      <div class="preloader-radar-circle"></div>
+      <div class="preloader-radar-sweep"></div>
+    </div>
+
+    <div class="preloader-content">
+      
+      <!-- Drone Hologram HUD with 4 Spinning Propellers -->
+      <div class="preloader-drone-hud">
+        <div class="hud-ring-outer"></div>
+        <div class="hud-ring-dashed"></div>
+        
+        <!-- Drone Model with 4 Spinning Propellers & Central Core Sensor -->
+        <div class="preloader-drone-wrapper">
+          <div class="propeller-rotor rotor-tl"></div>
+          <div class="propeller-rotor rotor-tr"></div>
+          <div class="propeller-rotor rotor-bl"></div>
+          <div class="propeller-rotor rotor-br"></div>
+          
+          <svg class="preloader-drone-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Drone Frame Arms -->
+            <line x1="22" y1="22" x2="78" y2="78" stroke="#3b82f6" stroke-width="3.5" stroke-linecap="round" />
+            <line x1="78" y1="22" x2="22" y2="78" stroke="#3b82f6" stroke-width="3.5" stroke-linecap="round" />
+            <!-- Rotor Mounts -->
+            <circle cx="22" cy="22" r="7" fill="#1e3a8a" stroke="#60a5fa" stroke-width="2" />
+            <circle cx="78" cy="22" r="7" fill="#1e3a8a" stroke="#60a5fa" stroke-width="2" />
+            <circle cx="22" cy="78" r="7" fill="#1e3a8a" stroke="#60a5fa" stroke-width="2" />
+            <circle cx="78" cy="78" r="7" fill="#1e3a8a" stroke="#60a5fa" stroke-width="2" />
+            <!-- Central Drone Cockpit Body -->
+            <rect x="36" y="36" width="28" height="28" rx="8" fill="#0b1329" stroke="#38bdf8" stroke-width="2.5" />
+            <!-- Pulsing Telemetry Optical Sensor -->
+            <circle cx="50" cy="50" r="5.5" fill="#38bdf8" class="drone-sensor-pulse" />
+          </svg>
+        </div>
+        
+        <!-- Crosshairs & Orbit Coordinates -->
+        <span class="hud-crosshair ch-top"></span>
+        <span class="hud-crosshair ch-bottom"></span>
+        <span class="hud-crosshair ch-left"></span>
+        <span class="hud-crosshair ch-right"></span>
+      </div>
+
+      <!-- Stackly Brand Logo -->
+      <div class="preloader-brand-wrap">
+        <img src="asset/images/stackly_.webp" alt="Stackly Logo" class="preloader-logo-img">
+        <span class="preloader-tagline">Autonomous Aerial Intelligence</span>
+      </div>
+
+      <!-- Telemetry Status Bar -->
+      <div class="preloader-progress-box">
+        <div class="preloader-status-row">
+          <span class="preloader-status-text" id="preloaderStatusText">INITIALIZING FLIGHT SYSTEMS...</span>
+          <span class="preloader-percentage" id="preloaderPercent">0%</span>
+        </div>
+        
+        <div class="preloader-track">
+          <div class="preloader-bar" id="preloaderBar"></div>
+        </div>
+      </div>
+
+      <!-- Theme-Related Telemetry Badges -->
+      <div class="preloader-telemetry-badges">
+        <div class="telemetry-badge">
+          <span class="badge-icon">🛰️</span>
+          <span class="badge-label">GPS: LOCKED</span>
+        </div>
+        <div class="telemetry-badge">
+          <span class="badge-icon">📡</span>
+          <span class="badge-label">LIDAR: 4K</span>
+        </div>
+        <div class="telemetry-badge">
+          <span class="badge-icon">🔋</span>
+          <span class="badge-label">BAT: 100%</span>
+        </div>
+        <div class="telemetry-badge">
+          <span class="badge-icon">⚡</span>
+          <span class="badge-label">SYS: ONLINE</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       SITE HEADER / NAVIGATION (Exact Crop Match)
+       =================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-wrapper">
+      <!-- Brand Logo using stackly_.webp -->
+      <a href="index.html" class="brand-logo" aria-label="Stackly Home">
+        <img src="asset/images/stackly_.webp" alt="Stackly Logo" class="brand-logo-img">
+      </a>
+
+      <!-- Navigation Menu with Top Active Indicator -->
+      <nav class="main-navigation" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">HOME</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT</a></li>
+          <li><a href="blog.html" class="nav-link">BLOG</a></li>
+          <li><a href="services.html" class="nav-link">SERVICES</a></li>
+          <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+          <a href="login.html" class="btn-mobile-login">LOG IN</a>
+          <a href="signup.html" class="btn-mobile-signup">SIGN UP</a>
+        </div>
+      </nav>
+
+      <!-- Right Header Actions: Shopping Cart & Solid Blue Log In Block -->
+      <div class="header-right-actions">
+        <a href="login.html" class="cart-icon-btn" aria-label="View Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-count-badge">0</span>
+        </a>
+
+        <a href="login.html" class="btn-header-login">LOG IN</a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       MOBILE FULLSCREEN ROYAL BLUE DRAWER (Exact Screenshot Match)
+       =================================================================== -->
+  <div class="mobile-drawer-menu" id="mobileDrawerMenu" aria-hidden="true">
+    <div class="mobile-drawer-inner">
+      
+      <!-- Top Bar: Close Button at Top Left -->
+      <div class="mobile-drawer-header">
+        <button type="button" class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Brand Logo -->
+      <div class="mobile-drawer-brand">
+        <a href="index.html" aria-label="Stackly Home">
+          <img src="asset/images/stackly_.webp" alt="Stackly Logo" class="mobile-drawer-logo">
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="mobile-drawer-nav" aria-label="Mobile Navigation">
+        <ul class="mobile-drawer-links">
+          <li><a href="index.html" class="mobile-nav-item active">Home</a></li>
+          <li><a href="about.html" class="mobile-nav-item">About</a></li>
+          <li><a href="blog.html" class="mobile-nav-item">Blog</a></li>
+          <li><a href="services.html" class="mobile-nav-item">Service</a></li>
+          <li><a href="contact.html" class="mobile-nav-item">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Contact Info Section -->
+      <div class="mobile-drawer-info">
+        <p class="mobile-info-address">
+          5961 &nbsp;Santa Fe Ave, Huntington Park, CA 90255, USA
+        </p>
+        <div class="mobile-info-contacts">
+          <div class="mobile-info-phones">
+            <a href="tel:+18003414141">+1 800 341 41 41</a>
+            <a href="tel:+18008346274">+1 800 834 62 74</a>
+          </div>
+          <a href="mailto:info@quadron.co" class="mobile-info-email">info@quadron.co</a>
+        </div>
+      </div>
+
+      <!-- Social Media Outlined Circles -->
+      <div class="mobile-drawer-socials">
+        <a href="https://facebook.com" class="mobile-social-circle" aria-label="Facebook" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a href="https://twitter.com" class="mobile-social-circle" aria-label="Twitter" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+          </svg>
+        </a>
+        <a href="https://instagram.com" class="mobile-social-circle" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Bottom Action Buttons: Log In & Make Order -->
+      <div class="mobile-drawer-bottom">
+        <div class="mobile-drawer-actions-grid">
+          <a href="login.html" class="btn-mobile-drawer-login">LOG IN</a>
+          <a href="signup.html" class="btn-mobile-make-order">SIGN UP</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       HERO SECTION WITH 5-SLIDE CAROUSEL (Exact Screenshot Design)
+       =================================================================== -->
+  <section class="hero-section">
+    <!-- Decorative Watermark Shape Behind Text -->
+    <div class="hero-watermark-shape"></div>
+
+    <!-- Background Slider Container -->
+    <div class="hero-slider" id="heroSlider">
+      
+      <!-- Slide 1 (Matching screenshot drone image & content) -->
+      <div class="hero-slide active">
+        <div class="slide-bg" style="background-image: url('asset/images/hero-slide-1.webp');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content-wrapper">
+          <div class="hero-content">
+            <div class="hero-badge-wrap">
+              <span class="hero-badge">Stackly</span>
+            </div>
+            <h1 class="hero-title">The Ultraportable<br>Drone for the Best Video</h1>
+            <p class="hero-description">The ultraportable Mavic Air features high-end flight performance and functionality for limitless exploration.</p>
+            <a href="404.html" class="hero-cta">
+              <span class="circle-arrow-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </span>
+              <span class="cta-label">DISCOVER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="hero-slide">
+        <div class="slide-bg" style="background-image: url('asset/images/hero-slide-2.webp');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content-wrapper">
+          <div class="hero-content">
+            <div class="hero-badge-wrap">
+              <span class="hero-badge">Aerial Intelligence</span>
+            </div>
+            <h1 class="hero-title">Precision Geospatial<br>& 3D LiDAR Mapping</h1>
+            <p class="hero-description">Transform survey workflows with centimeter-accurate orthomosaics, elevation models, and instant cloud analytics.</p>
+            <a href="404.html" class="hero-cta">
+              <span class="circle-arrow-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </span>
+              <span class="cta-label">DISCOVER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="hero-slide">
+        <div class="slide-bg" style="background-image: url('asset/images/hero-slide-3.webp');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content-wrapper">
+          <div class="hero-content">
+            <div class="hero-badge-wrap">
+              <span class="hero-badge">Industrial Diagnostics</span>
+            </div>
+            <h1 class="hero-title">Next-Gen Thermal &<br>Infrastructure Inspection</h1>
+            <p class="hero-description">Reduce inspection downtime and eliminate high-altitude risk with intelligent radiometric thermal imaging sensors.</p>
+            <a href="404.html" class="hero-cta">
+              <span class="circle-arrow-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </span>
+              <span class="cta-label">DISCOVER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="hero-slide">
+        <div class="slide-bg" style="background-image: url('asset/images/hero-slide-4.webp');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content-wrapper">
+          <div class="hero-content">
+            <div class="hero-badge-wrap">
+              <span class="hero-badge">Autonomous Logistics</span>
+            </div>
+            <h1 class="hero-title">High-Speed Cargo &<br>Direct Payload Delivery</h1>
+            <p class="hero-description">Rapid and automated medical, emergency, and logistical transport powered by resilient AI flight navigation.</p>
+            <a href="404.html" class="hero-cta">
+              <span class="circle-arrow-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </span>
+              <span class="cta-label">DISCOVER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="hero-slide">
+        <div class="slide-bg" style="background-image: url('asset/images/Tabpanel\ \(1\).webp');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content-wrapper">
+          <div class="hero-content">
+            <div class="hero-badge-wrap">
+              <span class="hero-badge">Cinema Production</span>
+            </div>
+            <h1 class="hero-title">Cinema-Grade 8K HDR<br>Aerial Film Production</h1>
+            <p class="hero-description">Capture breathtaking perspectives with stabilized 3-axis full-frame sensors and optical zoom lenses.</p>
+            <a href="404.html" class="hero-cta">
+              <span class="circle-arrow-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </span>
+              <span class="cta-label">DISCOVER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Floating Vertical Social Icons -->
+    <div class="hero-social-sidebar">
+      <a href="404.html" class="social-icon-link" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="404.html" class="social-icon-link" aria-label="Twitter">
+        <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+      </a>
+      <a href="404.html" class="social-icon-link" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+    </div>
+
+    <!-- Hero Bottom Bar with Slider Navigation Arrows Only -->
+    <div class="hero-bottom-bar">
+      <div class="container hero-bottom-flex">
+        <!-- Slider Navigation Arrows -->
+        <div class="hero-slider-controls">
+          <div class="slider-nav-arrows">
+            <button class="nav-arrow" id="prevSlide" aria-label="Previous Slide">
+              <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="nav-arrow" id="nextSlide" aria-label="Next Slide">
+              <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SERVICES SECTION ("We Help you Embrace the Future")
+       =================================================================== -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Services</span>
+        <h2 class="section-title">We Help you<br>Embrace the Future</h2>
+      </div>
+
+      <!-- 6 Service Items Grid (Matching screenshot layout & icons) -->
+      <div class="services-grid">
+        
+        <!-- 1. Delivery -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <svg viewBox="0 0 48 48">
+              <!-- Drone carrying parcel -->
+              <path d="M12 14L24 19L36 14" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 12C8 8 16 8 16 12M32 12C32 8 40 8 40 12" stroke-linecap="round"/>
+              <circle cx="24" cy="20" r="4"/>
+              <rect x="18" y="27" width="12" height="13" rx="1.5"/>
+              <path d="M18 33H30M24 27V40" stroke-linecap="round"/>
+              <path d="M21 24L19 27M27 24L29 27" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Delivery</h3>
+        </div>
+
+        <!-- 2. News & Media -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <svg viewBox="0 0 48 48">
+              <!-- Microphone & broadcast waves -->
+              <rect x="18" y="10" width="12" height="20" rx="6"/>
+              <path d="M12 22C12 28.6 17.4 34 24 34C30.6 34 36 28.6 36 22" stroke-linecap="round"/>
+              <line x1="24" y1="34" x2="24" y2="42" stroke-linecap="round"/>
+              <line x1="16" y1="42" x2="32" y2="42" stroke-linecap="round"/>
+              <path d="M8 16C6 18.5 6 21.5 8 24M40 16C42 18.5 42 21.5 40 24" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="service-title">News & Media</h3>
+        </div>
+
+        <!-- 3. Public Safety -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <svg viewBox="0 0 48 48">
+              <!-- Badge / Shield & Drone Sensor -->
+              <path d="M24 6L38 12V24C38 33 24 42 24 42C24 42 10 33 10 24V12L24 6Z"/>
+              <circle cx="24" cy="23" r="5"/>
+              <path d="M24 14V18M24 28V32M15 23H19M29 23H33" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Public Safety</h3>
+        </div>
+
+        <!-- 4. Film Production -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <svg viewBox="0 0 48 48">
+              <!-- Video camera / Film icon -->
+              <rect x="8" y="16" width="22" height="18" rx="3"/>
+              <path d="M30 23L40 16V34L30 27" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="16" cy="11" r="4"/>
+              <circle cx="24" cy="11" r="4"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Film<br>Production</h3>
+        </div>
+
+        <!-- 5. Inspection -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <svg viewBox="0 0 48 48">
+              <!-- Blueprint map & target inspection -->
+              <rect x="10" y="8" width="28" height="32" rx="2"/>
+              <line x1="16" y1="16" x2="32" y2="16" stroke-linecap="round"/>
+              <line x1="16" y1="24" x2="24" y2="24" stroke-linecap="round"/>
+              <circle cx="28" cy="28" r="7"/>
+              <line x1="33" y1="33" x2="39" y2="39" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Inspection</h3>
+        </div>
+
+        <!-- 6. Construction -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <svg viewBox="0 0 48 48">
+              <!-- Wrench / Crane / Construction tool -->
+              <path d="M28 10L36 18M38 12L34 16" stroke-linecap="round"/>
+              <path d="M30 12C28 10 24 10 21 13L10 24C8.5 25.5 8.5 28 10 29.5L18.5 38C20 39.5 22.5 39.5 24 38L35 27C38 24 38 20 36 18"/>
+              <path d="M12 36L8 40M16 40L14 42" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Construction</h3>
+        </div>
+
+      </div>
+
+      <!-- Two-Column Text Description (Matching screenshot) -->
+      <div class="services-text-row">
+        <div class="services-highlight-text">
+          We provide expert inspection services for your organization's mission critical assets using drone technology.
+        </div>
+        <div class="services-body-text">
+          Triplefin blenny gibberfish edgehead stonecat Australian grayling. Glass knifefish Bombay duck Molly Miller Quillfish stargazer collared dogfish silver hake. Temperate bass trout filefish medaka trout perch herring devil ray sleeper dusky grouper sand diver. Tilefish giant danio Ziege Toanweo fighting fish collared dogfish.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SPECIAL THINGS SECTION (Matching Exact Screenshot Design)
+       =================================================================== -->
+  <section class="special-things-section" id="special-things">
+    <div class="container">
+      <div class="special-header">
+        <span class="special-subtitle">Additional Services</span>
+        <h2 class="special-title">Special Things</h2>
+      </div>
+
+      <!-- 3-Column Image Cards Grid -->
+      <div class="special-grid">
+        <!-- Card 1: Entertainment -->
+        <div class="special-card">
+          <div class="special-img-wrapper">
+            <img src="asset/images/111.webp" alt="Entertainment Aerial Drone View">
+            <div class="special-img-overlay"></div>
+            <span class="special-num">01</span>
+          </div>
+          <div class="special-card-footer">
+            <h3 class="special-card-title">Entertainment</h3>
+          </div>
+        </div>
+
+        <!-- Card 2: Broadcasts -->
+        <div class="special-card">
+          <div class="special-img-wrapper">
+            <img src="asset/images/22.webp" alt="Broadcasts Aerial Drone Flight">
+            <div class="special-img-overlay"></div>
+            <span class="special-num">02</span>
+          </div>
+          <div class="special-card-footer">
+            <h3 class="special-card-title">Broadcasts</h3>
+          </div>
+        </div>
+
+        <!-- Card 3: Science -->
+        <div class="special-card">
+          <div class="special-img-wrapper">
+            <img src="asset/images/333.webp" alt="Science Environmental Drone Exploration">
+            <div class="special-img-overlay"></div>
+            <span class="special-num">03</span>
+          </div>
+          <div class="special-card-footer">
+            <h3 class="special-card-title">Science</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       INNOVATIONS AND BREAKTHROUGHS SECTION (Exact Screenshot Design)
+       =================================================================== -->
+  <section class="innovations-section" id="innovations">
+    <!-- Top Part: Royal Blue Section with Drone Blueprint Diagram -->
+    <div class="innov-blue-block">
+      <div class="container innov-blue-grid">
+        <!-- Left: Drone Wireframe Blueprint Illustration -->
+        <div class="drone-blueprint-wrap">
+          <svg class="drone-blueprint-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Center Drone Fuselage Body -->
+            <ellipse cx="250" cy="250" rx="36" ry="68" stroke="#ffffff" stroke-width="1.8" opacity="0.8"/>
+            <ellipse cx="250" cy="250" rx="24" ry="50" stroke="#ffffff" stroke-width="1.2" opacity="0.5"/>
+            <path d="M250 182V318" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.6"/>
+            <circle cx="250" cy="210" r="10" stroke="#ffffff" stroke-width="1.5" opacity="0.9"/>
+            <circle cx="250" cy="250" r="6" stroke="#ffffff" stroke-width="1.5" opacity="0.9"/>
+            
+            <!-- 4 Diagonal Arms -->
+            <path d="M228 208L140 120" stroke="#ffffff" stroke-width="2" opacity="0.75"/>
+            <path d="M272 208L360 120" stroke="#ffffff" stroke-width="2" opacity="0.75"/>
+            <path d="M228 292L140 380" stroke="#ffffff" stroke-width="2" opacity="0.75"/>
+            <path d="M272 292L360 380" stroke="#ffffff" stroke-width="2" opacity="0.75"/>
+
+            <path d="M220 220L135 135" stroke="#ffffff" stroke-width="1.2" opacity="0.4"/>
+            <path d="M280 220L365 135" stroke="#ffffff" stroke-width="1.2" opacity="0.4"/>
+            <path d="M220 280L135 365" stroke="#ffffff" stroke-width="1.2" opacity="0.4"/>
+            <path d="M280 280L365 365" stroke="#ffffff" stroke-width="1.2" opacity="0.4"/>
+
+            <!-- Top Left Motor & Propeller -->
+            <circle cx="135" cy="115" r="22" stroke="#ffffff" stroke-width="1.8" opacity="0.8"/>
+            <circle cx="135" cy="115" r="8" stroke="#ffffff" stroke-width="1.5" opacity="0.9"/>
+            <path d="M75 145C105 130 165 100 195 85" stroke="#ffffff" stroke-width="2" opacity="0.65" stroke-linecap="round"/>
+            <path d="M195 85C165 100 105 130 75 145" stroke="#ffffff" stroke-width="2" opacity="0.65" stroke-linecap="round"/>
+
+            <!-- Top Right Motor & Propeller -->
+            <circle cx="365" cy="115" r="22" stroke="#ffffff" stroke-width="1.8" opacity="0.8"/>
+            <circle cx="365" cy="115" r="8" stroke="#ffffff" stroke-width="1.5" opacity="0.9"/>
+            <path d="M305 85C335 100 395 130 425 145" stroke="#ffffff" stroke-width="2" opacity="0.65" stroke-linecap="round"/>
+
+            <!-- Bottom Left Motor & Propeller -->
+            <circle cx="135" cy="385" r="22" stroke="#ffffff" stroke-width="1.8" opacity="0.8"/>
+            <circle cx="135" cy="385" r="8" stroke="#ffffff" stroke-width="1.5" opacity="0.9"/>
+            <path d="M75 355C105 370 165 400 195 415" stroke="#ffffff" stroke-width="2" opacity="0.65" stroke-linecap="round"/>
+
+            <!-- Bottom Right Motor & Propeller -->
+            <circle cx="365" cy="385" r="22" stroke="#ffffff" stroke-width="1.8" opacity="0.8"/>
+            <circle cx="365" cy="385" r="8" stroke="#ffffff" stroke-width="1.5" opacity="0.9"/>
+            <path d="M305 415C335 400 395 370 425 355" stroke="#ffffff" stroke-width="2" opacity="0.65" stroke-linecap="round"/>
+
+            <!-- Outer Technical Grid & Rings -->
+            <circle cx="250" cy="250" r="190" stroke="#ffffff" stroke-width="0.8" stroke-dasharray="6 6" opacity="0.25"/>
+            <circle cx="250" cy="250" r="230" stroke="#ffffff" stroke-width="0.6" opacity="0.15"/>
+          </svg>
+        </div>
+
+        <!-- Right: Text Content -->
+        <div class="innov-blue-content">
+          <span class="innov-blue-subtitle">— Mobile App</span>
+          <h2 class="innov-blue-title">Innovations and<br>Breakthroughs</h2>
+          <p class="innov-blue-desc">
+            Lorem ipsum dolor sit amet, consectetur adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officiadese runt mollit anim id est laborum.
+          </p>
+          <p class="innov-blue-desc">
+            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+          </p>
+          <a href="404.html" class="innov-circle-btn">
+            <span class="circle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </span>
+            <span class="btn-text">MORE</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Part: Overlapping White Card with 3 Articles -->
+    <div class="container innov-overlap-container">
+      <div class="innov-white-card">
+        <!-- White Card Header -->
+        <div class="innov-card-header">
+          <div>
+            <span class="innov-card-subtitle">— Mobile App</span>
+            <h2 class="innov-card-title">Innovations and<br>Breakthroughs</h2>
+          </div>
+          <div>
+            <a href="404.html" class="innov-get-started-btn">
+              <span class="circle-icon-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </span>
+              <span class="btn-text-blue">GET STARTED</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3-Column Articles Grid -->
+        <div class="innov-articles-grid">
+          <!-- Article 1 -->
+          <article class="innov-article-item">
+            <div class="innov-article-img-wrap">
+              <img src="asset/images/app1 (1).webp" alt="The ultraportable MaviCopter Air features">
+            </div>
+            <span class="innov-article-num">01</span>
+            <h3 class="innov-article-title">The ultraportable MaviCopter Air features</h3>
+            <p class="innov-article-desc">
+              Staghorn sculpin plownose chimaera sawfish temperate perch goatfish jackfish darter scaly dragonfish king of herring.
+            </p>
+            <a href="404.html" class="innov-article-link">MORE</a>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="innov-article-item">
+            <div class="innov-article-img-wrap">
+              <img src="asset/images/app1 (3).webp" alt="Stackly Announces Pricing and Availability of Multilink">
+            </div>
+            <span class="innov-article-num">02</span>
+            <h3 class="innov-article-title">Stackly Announces Pricing and Availability of Multilink</h3>
+            <p class="innov-article-desc">
+              Staghorn sculpin plownose chimaera sawfish temperate perch goatfish jackfish darter scaly dragonfish king of herring.
+            </p>
+            <a href="404.html" class="innov-article-link">MORE</a>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="innov-article-item">
+            <div class="innov-article-img-wrap">
+              <img src="asset/images/app1 (2).webp" alt="Air features is Ultraportable MaviCopter">
+            </div>
+            <span class="innov-article-num">03</span>
+            <h3 class="innov-article-title">Air features is Ultraportable MaviCopter</h3>
+            <p class="innov-article-desc">
+              Staghorn sculpin plownose chimaera sawfish temperate perch goatfish jackfish darter scaly dragonfish king of herring.
+            </p>
+            <a href="404.html" class="innov-article-link">MORE</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       PRICING TABLES SECTION ("Awesome Pricing Plan")
+       =================================================================== -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="pricing-header">
+        <span class="pricing-subtitle">Pricing Tables</span>
+        <h2 class="pricing-title">Awesome Pricing Plan</h2>
+      </div>
+
+      <!-- 3-Column Pricing Cards Grid -->
+      <div class="pricing-grid">
+        <!-- Plan 1: Personal -->
+        <div class="pricing-card">
+          <div class="pricing-icon-box">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Compact folding portable drone -->
+              <rect x="22" y="16" width="20" height="32" rx="6" stroke="currentColor" stroke-width="2.2"/>
+              <circle cx="32" cy="24" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M22 22L12 12M42 22L52 12M22 42L12 52M42 42L52 52" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+              <circle cx="52" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="52" r="5" stroke="currentColor" stroke-width="2"/>
+              <circle cx="52" cy="52" r="5" stroke="currentColor" stroke-width="2"/>
+              <line x1="28" y1="36" x2="36" y2="36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="plan-name">Personal</h3>
+          <ul class="plan-features">
+            <li class="active"><span class="check-icon">✓</span> Occaecat cupidatat</li>
+            <li class="active"><span class="check-icon">✓</span> Officiadeserunt mollit</li>
+            <li>Lorem id est laborum.</li>
+            <li>Anim id est laborum.</li>
+          </ul>
+          <div class="plan-price">Free</div>
+          <a href="404.html" class="btn-plan-outline">GET STARTED</a>
+        </div>
+
+        <!-- Plan 2: Small team -->
+        <div class="pricing-card">
+          <div class="pricing-icon-box">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Multi-rotor heavy drone with sensor payload -->
+              <rect x="24" y="24" width="16" height="16" rx="3" stroke="currentColor" stroke-width="2.2"/>
+              <circle cx="32" cy="32" r="3" fill="currentColor"/>
+              <line x1="32" y1="12" x2="32" y2="24" stroke="currentColor" stroke-width="2.2"/>
+              <line x1="32" y1="40" x2="32" y2="52" stroke="currentColor" stroke-width="2.2"/>
+              <line x1="12" y1="32" x2="24" y2="32" stroke="currentColor" stroke-width="2.2"/>
+              <line x1="40" y1="32" x2="52" y2="32" stroke="currentColor" stroke-width="2.2"/>
+              <circle cx="32" cy="12" r="6" stroke="currentColor" stroke-width="2"/>
+              <circle cx="32" cy="52" r="6" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="32" r="6" stroke="currentColor" stroke-width="2"/>
+              <circle cx="52" cy="32" r="6" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="plan-name">Small team</h3>
+          <ul class="plan-features">
+            <li class="active"><span class="check-icon">✓</span> Occaecat cupidatat</li>
+            <li class="active"><span class="check-icon">✓</span> Officiadeserunt mollit</li>
+            <li class="active"><span class="check-icon">✓</span> Lorem id est laborum.</li>
+            <li>Anim id est laborum.</li>
+          </ul>
+          <div class="plan-price">$100.00</div>
+          <a href="404.html" class="btn-plan-outline">GET STARTED</a>
+        </div>
+
+        <!-- Plan 3: Enterprise -->
+        <div class="pricing-card">
+          <div class="pricing-icon-box">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Enterprise drone with cargo/sensor pod -->
+              <path d="M18 20H46V46C46 49 43 52 40 52H24C21 52 18 49 18 46V20Z" stroke="currentColor" stroke-width="2.2"/>
+              <line x1="14" y1="20" x2="50" y2="20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M22 20V12H42V20" stroke="currentColor" stroke-width="2"/>
+              <circle cx="14" cy="14" r="4" stroke="currentColor" stroke-width="2"/>
+              <circle cx="50" cy="14" r="4" stroke="currentColor" stroke-width="2"/>
+              <line x1="26" y1="32" x2="38" y2="32" stroke="currentColor" stroke-width="2"/>
+              <line x1="26" y1="40" x2="38" y2="40" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="plan-name">Enterprise</h3>
+          <ul class="plan-features">
+            <li class="active"><span class="check-icon">✓</span> Occaecat cupidatat</li>
+            <li class="active"><span class="check-icon">✓</span> Officiadeserunt mollit</li>
+            <li class="active"><span class="check-icon">✓</span> Lorem id est laborum.</li>
+            <li class="active"><span class="check-icon">✓</span> Anim id est laborum.</li>
+          </ul>
+          <div class="plan-price">$700.00</div>
+          <a href="404.html" class="btn-plan-outline">GET STARTED</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       VISION BASED PROTECTION & SHOWCASE SECTION
+       =================================================================== -->
+  <section class="vision-section" id="vision">
+    <div class="container vision-main-container">
+      <!-- Left Side Floating Arrow Controls -->
+      <div class="vision-nav-controls">
+        <button class="vision-arrow" aria-label="Previous Showcase">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="vision-arrow" aria-label="Next Showcase">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <!-- Right Main Content Area with Overlapping Media -->
+      <div class="vision-content-layout">
+        <!-- Top Wide Video Banner -->
+        <div class="vision-banner-wrap">
+          <img src="asset/images/vision-drone.webp" alt="Vision Based Protection Drone Flight">
+          <div class="vision-banner-overlay"></div>
+          <a href="404.html" class="vision-watch-video-btn" id="openVisionVideo">
+            <span class="circle-play-icon">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </span>
+            <span class="watch-text">WATCH THE VIDEO</span>
+          </a>
+        </div>
+
+        <!-- Bottom Grid: Text on Left + Overlapping Projects Card on Right -->
+        <div class="vision-bottom-grid">
+          <div class="vision-text-block">
+            <span class="vision-tag">— Causes</span>
+            <h2 class="vision-title">Vision Based<br>Protection</h2>
+            <p class="vision-desc">
+              Spiny bass bluntnose knifefish red velvetfish sailfish surgeonfish scorpionfish yellow-and-black triplefin sunfish cod icefish yellowtail kingfish ayu.
+            </p>
+            <a href="404.html" class="vision-details-link">DETAILS</a>
+          </div>
+
+          <!-- Overlapping Tall Projects Card -->
+          <div class="vision-projects-card">
+            <img src="asset/images/projects-drone.webp" alt="All Projects Drone Aerial View">
+            <div class="vision-projects-overlay"></div>
+            <a href="404.html" class="vision-all-projects-btn">
+              <span class="circle-arrow-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </span>
+              <span class="projects-btn-text">ALL PROJECTS</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       MOBILE APP SHOWCASE SECTION ("Innovations and Breakthroughs")
+       =================================================================== -->
+  <section class="mobile-app-section" id="mobile-app">
+    <div class="container mobile-app-grid">
+      <!-- Left: Smartphone App UI Mockup -->
+      <div class="phone-mockup-container">
+        <img src="asset/images/mobile.webp" alt="Stackly UAV Drone Mobile App Interface" class="phone-mockup-img">
+      </div>
+
+      <!-- Right: Mobile App Info & Store Badges -->
+      <div class="mobile-app-content">
+        <span class="app-subtitle">— Mobile App</span>
+        <h2 class="app-title">Innovations and<br>Breakthroughs</h2>
+        <p class="app-desc">
+          Aerial surveying is not just about the aircraft, it's about total UAV solutions, complete with all the tools geospatial pros need to perform jobs accurately, efficiently, and safely.
+        </p>
+        <p class="app-desc">
+          Our multi-app packages integrate high-performance drones with advanced sensors and software. They're designed for quick learning and easy use, so you can get your UAV services off the ground immediately.
+        </p>
+
+        <!-- App Store Download Badges -->
+        <div class="store-badges-wrap">
+          <a href="404.html" class="store-badge-btn" aria-label="Get it on Google Play">
+            <svg class="badge-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3.609 1.814L13.792 12 3.61 22.186c-.23-.207-.36-.513-.36-.88V2.694c0-.367.13-.673.359-.88zm11.306 11.306l2.122-2.122-11.96-6.732 9.838 8.854zm0 1.76L5.077 23.734l11.96-6.732-2.122-2.122zm1.244-1.244l2.766 1.556c.725.408.725 1.077 0 1.485l-2.766 1.556-2.001-2.001 2.001-1.596z"/>
+            </svg>
+            <div class="badge-text">
+              <span class="small-text">GET IT ON</span>
+              <span class="big-text">Google play</span>
+            </div>
+          </a>
+
+          <a href="404.html" class="store-badge-btn" aria-label="Download on the App Store">
+            <svg class="badge-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 1.01-2.87-.96.04-2.13.65-2.82 1.45-.61.71-1.15 1.78-1.01 2.82 1.08.08 2.18-.56 2.82-1.4z"/>
+            </svg>
+            <div class="badge-text">
+              <span class="small-text">Available on the</span>
+              <span class="big-text">App Store</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       TESTIMONIALS SLIDER SECTION ("What People Say About Us")
+       =================================================================== -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container testimonials-grid">
+      <!-- Left: Heading & Interactive Navigation Arrows -->
+      <div class="testimonials-left">
+        <span class="testi-subtitle">— Testimonials</span>
+        <h2 class="testi-title">What People<br>Say About Us</h2>
+        <div class="testi-nav-arrows">
+          <button class="testi-arrow-btn" id="prevTestimonial" aria-label="Previous Testimonial">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="testi-arrow-btn" id="nextTestimonial" aria-label="Next Testimonial">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right: Testimonials Slide Deck -->
+      <div class="testimonials-right">
+        <div class="testimonials-top-divider"></div>
+        <div class="testimonials-quote-mark">“</div>
+        
+        <div class="testimonials-carousel" id="testimonialsCarousel">
+          <!-- Slide 1 -->
+          <div class="testimonial-slide active">
+            <blockquote class="testi-quote-text">
+              Who could look on these monuments without reflecting on the vanity of mortals in thus offering up testimonials of their respect for persons of whose very names posterity is ignorant? Whitebait woody sculpin humahumanukanukaapuaa skilfish; taimen scaly dragonfish lanternfish salmon. Surgill ray shipping goby spotted danio European perch. Kelpfish; ribbon sawtail fish longnose dace common tunny North Pacific daggertooth; halfbeak mackerel Atlantic salmon flabby whalefish.
+            </blockquote>
+            <div class="testi-author-card">
+              <img src="asset/images/avatar-1.webp" alt="Stackly Sales Manager" class="author-avatar">
+              <div class="author-meta">
+                <span class="author-name">STACKLY</span>
+                <span class="author-role">Sales Manager</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="testimonial-slide">
+            <blockquote class="testi-quote-text">
+              Stackly's autonomous fleet deployment transformed our thermal pipeline inspection process. Centimeter-level precision and rapid automated telemetry reduced our facility downtime by over 65% in the first quarter alone. Highly recommended for enterprise scale projects.
+            </blockquote>
+            <div class="testi-author-card">
+              <img src="asset/images/avatar-2.webp" alt="Marcus Vance CTO" class="author-avatar">
+              <div class="author-meta">
+                <span class="author-name">Marcus Vance</span>
+                <span class="author-role">Chief Technical Officer</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="testimonial-slide">
+            <blockquote class="testi-quote-text">
+              The cinema-grade 8K optical zoom capability and flawless flight stability allowed our broadcast team to capture live action sports with unprecedented clarity. Stackly represents the absolute benchmark of modern aerial engineering.
+            </blockquote>
+            <div class="testi-author-card">
+              <img src="asset/images/avatar-3.webp" alt="Elena Rostova Director" class="author-avatar">
+              <div class="author-meta">
+                <span class="author-name">Elena Rostova</span>
+                <span class="author-role">Director of Cinematography</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       NEWS & INSIGHTS SECTION (Matching Exact Screenshot)
+       =================================================================== -->
+  <section class="news-insights-section" id="blog">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="news-header">
+        <span class="news-subtitle">— Blog</span>
+        <h2 class="news-title">News & Insights</h2>
+      </div>
+
+      <!-- 2-Column Grid: 3 Vertical Posts (Left) + 1 Large Featured Post (Right) -->
+      <div class="news-grid">
+        <!-- Left Column: 3 Vertical News Articles -->
+        <div class="news-list-col">
+          <!-- Article 1 -->
+          <article class="news-item">
+            <div class="news-item-thumb">
+              <img src="asset/images/Component 13 (1).webp" alt="Stackly Forum Data Review in 2018">
+            </div>
+            <div class="news-item-content">
+              <span class="news-date">Oct 28, 2019</span>
+              <h3 class="news-item-title">
+                <a href="404.html">Stackly Forum Data Review in 2018</a>
+              </h3>
+              <div class="news-comment-meta">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                </svg>
+                <span>1</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="news-item">
+            <div class="news-item-thumb">
+              <img src="asset/images/Link.webp" alt="We launch a new Precision Agriculture project">
+            </div>
+            <div class="news-item-content">
+              <span class="news-date">Nov 27, 2019</span>
+              <h3 class="news-item-title">
+                <a href="404.html">We launch a new Precision Agriculture project</a>
+              </h3>
+              <div class="news-comment-meta">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                </svg>
+                <span>2</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="news-item">
+            <div class="news-item-thumb">
+              <img src="asset/images/Link (1).webp" alt="Stackly Announces Pricing And Availability of Multilink">
+            </div>
+            <div class="news-item-content">
+              <span class="news-date">Nov 27, 2019</span>
+              <h3 class="news-item-title">
+                <a href="404.html">Stackly Announces Pricing And Availability of Multilink</a>
+              </h3>
+              <div class="news-comment-meta">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                </svg>
+                <span>2</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- All Articles Button -->
+          <div class="news-btn-wrap">
+            <a href="404.html" class="all-articles-btn">
+              <span class="circle-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </span>
+              <span class="btn-text">ALL ARTICLES</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: 1 Large Featured Article -->
+        <div class="news-featured-col">
+          <article class="news-featured-card">
+            <div class="featured-media">
+              <img src="asset/images/Component 15.webp" alt="Artificial Intelligence applied to Precision Agriculture">
+            </div>
+            <div class="featured-info-box">
+              <span class="featured-date">Nov 27, 2019</span>
+              <h3 class="featured-title">
+                <a href="404.html">Artificial Intelligence applied to Precision Agriculture</a>
+              </h3>
+              <div class="featured-comment-meta">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                </svg>
+                <span>0</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       PARTNER / CLIENT LOGOS SLIDER SECTION (Royal Blue Background)
+       =================================================================== -->
+  <section class="partners-section" id="partners">
+    <div class="container partners-container">
+      <!-- Left Carousel Arrow -->
+      <button class="partners-arrow-btn prev-btn" id="prevPartner" aria-label="Previous Partners">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
+
+      <!-- Partners Carousel Window -->
+      <div class="partners-carousel-track-wrapper">
+        <div class="partners-carousel-track" id="partnersTrack">
+          
+          <!-- Slide 1 (Matching Exact Screenshot Grid) -->
+          <div class="partners-slide active">
+            <div class="partners-grid-layout">
+              <!-- Logo 1: Emblem Lotus / Heart Icon -->
+              <div class="partner-logo-item">
+                <svg class="partner-svg" viewBox="0 0 60 60" fill="currentColor">
+                  <circle cx="30" cy="30" r="26" fill="none" stroke="currentColor" stroke-width="3"/>
+                  <path d="M30 18C26 24 22 28 22 34C22 38.4 25.6 42 30 42C34.4 42 38 38.4 38 34C38 28 34 24 30 18Z"/>
+                  <circle cx="30" cy="27" r="3.5" fill="#283891"/>
+                </svg>
+              </div>
+
+              <!-- Logo 2: DIS RUP TION stacked bold logo -->
+              <div class="partner-logo-item">
+                <div class="logo-disruption">
+                  <span>DIS</span>
+                  <span>RUP</span>
+                  <span>TION</span>
+                </div>
+              </div>
+
+              <!-- Logo 3: Drone + YOURNAME PHOTOGRAPHY -->
+              <div class="partner-logo-item">
+                <div class="logo-yourname">
+                  <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="18" cy="18" r="4"/>
+                    <path d="M12 12L7 7M24 12L29 7M12 24L7 29M24 24L29 29"/>
+                    <circle cx="6" cy="6" r="3"/>
+                    <circle cx="30" cy="6" r="3"/>
+                    <circle cx="6" cy="30" r="3"/>
+                    <circle cx="30" cy="30" r="3"/>
+                  </svg>
+                  <div class="yourname-text">
+                    <strong>YOURNAME</strong>
+                    <small>PHOTOGRAPHY</small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Logo 4: TWINS (Stylized) -->
+              <div class="partner-logo-item">
+                <div class="logo-twins">
+                  <span>ƧNIWT</span>
+                </div>
+              </div>
+
+              <!-- Logo 5: Y (Stylized lettermark) -->
+              <div class="partner-logo-item">
+                <div class="logo-y">
+                  <svg viewBox="0 0 50 60" fill="currentColor">
+                    <path d="M10 10L24 34V52H32V34L46 10H36L28 26L20 10H10Z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Logo 6: bee Box Badge -->
+              <div class="partner-logo-item">
+                <div class="logo-bee-box">
+                  <span>be9</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 (Additional Verified Partner Brands) -->
+          <div class="partners-slide">
+            <div class="partners-grid-layout">
+              <div class="partner-logo-item">
+                <div class="logo-disruption">
+                  <span>AERO</span>
+                  <span>TECH</span>
+                  <span>CORP</span>
+                </div>
+              </div>
+              <div class="partner-logo-item">
+                <svg class="partner-svg" viewBox="0 0 60 60" fill="currentColor">
+                  <circle cx="30" cy="30" r="26" fill="none" stroke="currentColor" stroke-width="3"/>
+                  <polygon points="30,16 39,34 21,34"/>
+                </svg>
+              </div>
+              <div class="partner-logo-item">
+                <div class="logo-yourname">
+                  <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="6" y="6" width="24" height="24" rx="5"/>
+                    <circle cx="18" cy="18" r="5"/>
+                  </svg>
+                  <div class="yourname-text">
+                    <strong>AVIONICS</strong>
+                    <small>SYSTEMS</small>
+                  </div>
+                </div>
+              </div>
+              <div class="partner-logo-item">
+                <div class="logo-twins">
+                  <span>MATRIX</span>
+                </div>
+              </div>
+              <div class="partner-logo-item">
+                <div class="logo-y">
+                  <svg viewBox="0 0 50 60" fill="currentColor">
+                    <path d="M25 8L44 48H6L25 8Z" fill="none" stroke="currentColor" stroke-width="4"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="partner-logo-item">
+                <div class="logo-bee-box">
+                  <span>GEO</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Carousel Arrow -->
+      <button class="partners-arrow-btn next-btn" id="nextPartner" aria-label="Next Partners">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       FOOTER SECTION (Matching Exact Screenshot)
+       =================================================================== -->
+  <footer class="site-footer" id="contact">
+    <div class="container footer-main">
+      <div class="footer-grid">
+        <!-- Col 1: Logo & Contact Info & Socials -->
+        <div class="footer-col footer-about-col">
+          <div class="footer-logo-wrap">
+            <a href="404.html" class="footer-logo">
+              <img src="asset/images/stackly_.webp" alt="Stackly Logo" class="footer-logo-img">
+            </a>
+          </div>
+          <p class="footer-address">
+            5961 Santa Fe Ave,Huntington Park, CA 90255, USA
+          </p>
+          <p class="footer-phone">
+            +1 800 341 41 41 +1 800 834 62 74
+          </p>
+          <p class="footer-email">
+            <a href="mailto:info@Stackly.co">info@Stackly.co</a>
+          </p>
+          <div class="footer-social-links">
+            <a href="404.html" class="footer-social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="404.html" class="footer-social-btn" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+              </svg>
+            </a>
+            <a href="404.html" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Useful Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Useful Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="404.html">Documents</a></li>
+            <li><a href="404.html">Products</a></li>
+            <li><a href="404.html">Quadrone Shop</a></li>
+            <li><a href="404.html">Blog and News</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Main Menu -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Main Menu</h4>
+          <ul class="footer-links-list">
+            <li><a href="404.html">About Us</a></li>
+            <li><a href="404.html">Blogs</a></li>
+            <li><a href="404.html">Projects</a></li>
+            <li><a href="404.html">Contacts</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Additional Info -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Additional Info</h4>
+          <ul class="footer-links-list">
+            <li><a href="404.html">Become an Affiliate</a></li>
+            <li><a href="404.html">About Drone</a></li>
+            <li><a href="404.html">Community Meetups</a></li>
+            <li><a href="404.html">Why Buy With Us?</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Navigation -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="404.html">Become an Affiliate</a></li>
+            <li><a href="404.html">About Drone</a></li>
+            <li><a href="404.html">Community Meetups</a></li>
+            <li><a href="404.html">Why Buy With Us?</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Nav Bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <div class="footer-copyright">
+          Copyrights 2026 &copy; <span class="copyright-brand">Stackly</span>
+        </div>
+        <ul class="footer-bottom-nav">
+          <li><a href="404.html">Home</a></li>
+          <li><a href="404.html">Pages</a></li>
+          <li><a href="404.html">Blog</a></li>
+          <li><a href="404.html">Service</a></li>
+          <li><a href="404.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="asset/js/main.js"></script>
+</body>
+</html>

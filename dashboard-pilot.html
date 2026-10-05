@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stackly UAV Pilot Cockpit Console - Real-time flight controls, camera telemetry, and mission logs">
+  <title>UAV Pilot Console | Stackly Drone Services</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="asset/css/style.css">
+</head>
+<body class="dashboard-body">
+
+  <!-- Mobile Top Bar for Dashboards -->
+  <div class="dash-mobile-header">
+    <a href="index.html" class="dash-brand">
+      <img src="asset/images/stackly_.webp" alt="Stackly" class="dash-logo-img">
+    </a>
+    <div class="dash-mobile-right">
+      <span class="dash-role-badge pilot-badge">UAV Pilot</span>
+      <button type="button" class="dash-mobile-logout" onclick="handleLogout()" title="Log Out" aria-label="Log Out">
+        <svg class="logout-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+      </button>
+      <button class="dash-mobile-toggle" id="dashMobileToggle" aria-label="Toggle Dashboard Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Sidebar Navigation (5 Tab Options) -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <div class="dash-sidebar-header">
+      <a href="index.html" class="dash-brand">
+        <img src="asset/images/stackly_.webp" alt="Stackly" class="dash-logo-img">
+      </a>
+      <span class="dash-role-badge pilot-badge">UAV Pilot</span>
+    </div>
+
+    <!-- 5 Dash Bar Options -->
+    <nav class="dash-nav" aria-label="Pilot Dashboard Tabs">
+      <ul class="dash-nav-list">
+        <li>
+          <button type="button" class="dash-tab-btn active" data-tab="tab-cockpit">
+            <span class="dash-nav-icon">🕹️</span>
+            <span class="dash-nav-text">Pilot Cockpit</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dash-tab-btn" data-tab="tab-fpv">
+            <span class="dash-nav-icon">📹</span>
+            <span class="dash-nav-text">4K FPV Live Feed</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dash-tab-btn" data-tab="tab-waypoints">
+            <span class="dash-nav-icon">📍</span>
+            <span class="dash-nav-text">Waypoint Navigation</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dash-tab-btn" data-tab="tab-weather">
+            <span class="dash-nav-icon">🌤️</span>
+            <span class="dash-nav-text">Airspace Weather</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dash-tab-btn" data-tab="tab-logbook">
+            <span class="dash-nav-icon">📋</span>
+            <span class="dash-nav-text">Pilot Logbook</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Sidebar Footer with Dynamic User Info -->
+    <div class="dash-sidebar-footer">
+      <div class="dash-user-profile">
+        <div class="dash-avatar pilot-avatar" id="dashUserAvatar">PL</div>
+        <div class="dash-user-info">
+          <span class="dash-user-name" id="dashUserName">Capt. Ryan Davis</span>
+          <span class="dash-user-email" id="dashUserEmail">ryan.davis@stackly.co</span>
+        </div>
+      </div>
+      <button type="button" class="dash-logout-btn" onclick="handleLogout()" title="Log Out">
+        <svg class="logout-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+        <span>Log Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <div class="dash-main-wrap">
+    
+    <!-- Top Bar -->
+    <header class="dash-topbar">
+      <div class="dash-topbar-left">
+        <div class="dash-greeting-row">
+          <span class="dash-welcome-tag">Pilot In Command,</span>
+          <span class="dash-user-highlight" id="dashTopUserName">Capt. Ryan Davis</span>
+        </div>
+        <span class="dash-status-pill pilot-pill"><span class="pulse-green"></span> Link Status: 5.8 GHz Solid (99.2%) • Unit: STK-01 (Mavic 3 RTK)</span>
+      </div>
+      <div class="dash-topbar-right">
+       
+        <button type="button" class="btn-dash-logout" onclick="handleLogout()" title="Log Out">
+          <svg class="logout-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Dashboard Content Container -->
+    <main class="dash-content">
+      
+      <!-- ===================================================================
+           TAB 1: PILOT COCKPIT CONSOLE
+           =================================================================== -->
+      <section class="dash-tab-pane active" id="tab-cockpit">
+        
+        <!-- 4 Pilot Telemetry Stats -->
+        <div class="dash-stats-grid">
+          <div class="dash-stat-card">
+            <div class="dash-stat-header">
+              <span class="dash-stat-label">Altitude (AGL)</span>
+              <span class="dash-stat-badge-blue">GPS Baro</span>
+            </div>
+            <div class="dash-stat-val">118.4 m</div>
+            <p class="dash-stat-sub">FAA Max ceiling limit: 120.0 m</p>
+          </div>
+
+          <div class="dash-stat-card">
+            <div class="dash-stat-header">
+              <span class="dash-stat-label">Ground Speed</span>
+              <span class="dash-stat-badge-green">Cruising</span>
+            </div>
+            <div class="dash-stat-val">42.6 km/h</div>
+            <p class="dash-stat-sub">Wind resistance: 8.2 knots SE</p>
+          </div>
+
+          <div class="dash-stat-card">
+            <div class="dash-stat-header">
+              <span class="dash-stat-label">Battery Level</span>
+              <span class="dash-stat-badge-green">78%</span>
+            </div>
+            <div class="dash-stat-val">26 min rem.</div>
+            <p class="dash-stat-sub">Smart Return-to-Home at 20%</p>
+          </div>
+
+          <div class="dash-stat-card">
+            <div class="dash-stat-header">
+              <span class="dash-stat-label">Obstacle Avoidance</span>
+              <span class="dash-stat-badge-purple">360° Omnidirectional</span>
+            </div>
+            <div class="dash-stat-val">All Clear</div>
+            <p class="dash-stat-sub">LiDAR + Dual Vision Sensors active</p>
+          </div>
+        </div>
+
+        <!-- Video Feed & Flight Controls Grid -->
+        <div class="dash-two-col-grid">
+          
+          <!-- Live FPV Camera Feed -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h2 class="dash-card-title">Live 4K HDR Gimbal Telemetry</h2>
+              <span class="dash-card-tag">REC ● 00:14:28 [4K 60fps]</span>
+            </div>
+            <div class="dash-fpv-screen">
+              <img src="asset/images/video-thumb.webp" alt="Live Drone Camera Feed" class="dash-fpv-img">
+              <div class="fpv-hud-overlay">
+                <div class="hud-crosshair"></div>
+                <div class="hud-top-bar">PITCH: -12° | ROLL: 0° | YAW: 248° SW</div>
+                <div class="hud-bottom-bar">ISO 100 • 1/500s • f/2.8 • 24mm • 4K UHD</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flight Mission Controls & Waypoint Checklist -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h2 class="dash-card-title">Tactical Flight Controls</h2>
+              <span class="dash-card-tag">Waypoint 3 / 5 Active</span>
+            </div>
+            <div class="pilot-controls-body">
+              
+              <div class="mission-quick-actions">
+                <button type="button" class="btn-ctrl-primary">▶ Resume Mission</button>
+                <button type="button" class="btn-ctrl-warning">↺ Return to Home</button>
+                <button type="button" class="btn-ctrl-danger">⏸ Hover &amp; Hold</button>
+              </div>
+
+              <div class="waypoint-list">
+                <h3 class="waypoint-heading">Survey Path Progression</h3>
+                <div class="waypoint-item completed">
+                  <span class="wp-icon">✓</span>
+                  <span class="wp-title">WP 01 - Takeoff &amp; Calibration Check</span>
+                  <span class="wp-alt">15m</span>
+                </div>
+                <div class="waypoint-item completed">
+                  <span class="wp-icon">✓</span>
+                  <span class="wp-title">WP 02 - North Boundary Grid Scan</span>
+                  <span class="wp-alt">120m</span>
+                </div>
+                <div class="waypoint-item active-wp">
+                  <span class="wp-icon">◉</span>
+                  <span class="wp-title">WP 03 - Multispectral Crop Inspection</span>
+                  <span class="wp-alt">118m (Current)</span>
+                </div>
+                <div class="waypoint-item pending">
+                  <span class="wp-icon">○</span>
+                  <span class="wp-title">WP 04 - East Canopy Thermal Mapping</span>
+                  <span class="wp-alt">110m</span>
+                </div>
+                <div class="waypoint-item pending">
+                  <span class="wp-icon">○</span>
+                  <span class="wp-title">WP 05 - Precision Auto-Landing</span>
+                  <span class="wp-alt">0m</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ===================================================================
+           TAB 2: 4K FPV LIVE STREAM
+           =================================================================== -->
+      <section class="dash-tab-pane" id="tab-fpv">
+        <div class="dash-pane-header">
+          <div>
+            <h2 class="dash-pane-title">Ultra-Low Latency 4K FPV Stream</h2>
+            <p class="dash-pane-desc">Direct OcuSync 4.0 live encrypted stream with 3-axis mechanical gimbal joystick control</p>
+          </div>
+          <span class="dash-status-pill pilot-pill"><span class="pulse-green"></span> Bitrate: 65.4 Mbps • Latency: 18ms</span>
+        </div>
+
+        <div class="dash-two-col-grid">
+          
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Primary Optical Feed (STK-01)</h3>
+              <span class="dash-card-tag">H.265 Main 10-Bit</span>
+            </div>
+            <div class="dash-fpv-screen" style="height: 380px;">
+              <img src="asset/images/about-road.webp" alt="FPV Aerial Road Scan" class="dash-fpv-img">
+              <div class="fpv-hud-overlay">
+                <div class="hud-crosshair"></div>
+                <div class="hud-top-bar">CAMERA: 4/3 CMOS 20MP | FOV: 84°</div>
+                <div class="hud-bottom-bar">GIMBAL PITCH: -45° | YAW: 0° | ZOOM: 3.2X OPTICAL</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Gimbal &amp; Optics Controller</h3>
+            </div>
+            <div class="pilot-controls-body">
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Sensor Mode:</span>
+                <span class="sensor-val">Pro Manual Photogrammetry</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Aperture Setting:</span>
+                <span class="sensor-val">f/2.8 - f/11 Adjustable</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Mechanical Shutter:</span>
+                <span class="sensor-val">1/2000s (Zero Rolling Shutter Blur)</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Live SD Card Storage:</span>
+                <span class="sensor-val">128 GB High-Speed V90 (84% Free)</span>
+              </div>
+              
+              <div class="mission-quick-actions" style="margin-top: 1.5rem;">
+                <button type="button" class="btn-ctrl-primary">📸 Snap 48MP RAW</button>
+                <button type="button" class="btn-ctrl-warning">🔴 Toggle 4K REC</button>
+                <button type="button" class="btn-ctrl-primary">🔄 Center Gimbal</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           TAB 3: WAYPOINT NAVIGATION
+           =================================================================== -->
+      <section class="dash-tab-pane" id="tab-waypoints">
+        <div class="dash-pane-header">
+          <div>
+            <h2 class="dash-pane-title">Tactical Waypoint Corridor Planner</h2>
+            <p class="dash-pane-desc">Autonomous geofence corridor routing with 3D elevation obstacle clearance</p>
+          </div>
+          <button type="button" class="btn-dash-action-solid">+ Add Waypoint Pin</button>
+        </div>
+
+        <div class="dash-two-col-grid">
+          
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Airspace Route Map</h3>
+              <span class="dash-card-tag">Total Distance: 4.8 km</span>
+            </div>
+            <div class="dash-radar-screen" style="height: 360px;">
+              <img src="asset/images/services-map-screen.webp" alt="Waypoint Route Map" class="dash-radar-img">
+              <div class="radar-telemetry-overlay">
+                <div class="telem-chip">Distance Remaining: 1.6 km</div>
+                <div class="telem-chip">ETA to Landing: 00:08:45</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Flight Path Altitude &amp; Speed Steps</h3>
+            </div>
+            <div class="fleet-table-wrap">
+              <table class="fleet-table">
+                <thead>
+                  <tr>
+                    <th>WP #</th>
+                    <th>Coordinates</th>
+                    <th>Target Alt</th>
+                    <th>Speed</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>01</strong></td>
+                    <td>40.7447° N, 73.9485° W</td>
+                    <td>15 m</td>
+                    <td>10 km/h</td>
+                    <td><span class="status-chip active">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>02</strong></td>
+                    <td>40.7490° N, 73.9420° W</td>
+                    <td>120 m</td>
+                    <td>45 km/h</td>
+                    <td><span class="status-chip active">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>03</strong></td>
+                    <td>40.7530° N, 73.9380° W</td>
+                    <td>118 m</td>
+                    <td>42 km/h</td>
+                    <td><span class="status-chip active">In Progress</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>04</strong></td>
+                    <td>40.7580° N, 73.9320° W</td>
+                    <td>110 m</td>
+                    <td>35 km/h</td>
+                    <td><span class="status-chip idle">Queued</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>05</strong></td>
+                    <td>40.7447° N, 73.9485° W</td>
+                    <td>0 m</td>
+                    <td>5 km/h</td>
+                    <td><span class="status-chip idle">Auto-Land</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           TAB 4: AIRSPACE WEATHER & RADAR
+           =================================================================== -->
+      <section class="dash-tab-pane" id="tab-weather">
+        <div class="dash-pane-header">
+          <div>
+            <h2 class="dash-pane-title">Real-Time Airspace Weather &amp; Geomagnetic Radar</h2>
+            <p class="dash-pane-desc">Live wind vectors, precipitation Doppler radar, cloud base, visibility, and solar storm ratings</p>
+          </div>
+          <span class="dash-stat-badge-green">Flight Conditions: Green (Go for Flight)</span>
+        </div>
+
+        <div class="dash-two-col-grid">
+          
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Live Weather Radar &amp; Precipitation Scan</h3>
+              <span class="dash-card-tag">Doppler Sync: Live</span>
+            </div>
+            <div class="dash-radar-screen">
+              <img src="asset/images/dash-weather-map.webp" alt="Weather Radar Scan" class="dash-radar-img">
+              <div class="radar-telemetry-overlay">
+                <div class="telem-chip">Wind: 8.2 kts SE (Gusts 11 kts)</div>
+                <div class="telem-chip">Precipitation: 0.0 mm/h</div>
+                <div class="telem-chip">Visibility: 10+ Miles</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Meteorological Flight Index</h3>
+            </div>
+            <div class="pilot-controls-body">
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Air Temperature:</span>
+                <span class="sensor-val">21.5°C (Optimal Battery Efficiency)</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Barometric Pressure (QNH):</span>
+                <span class="sensor-val">1013.2 hPa (Standard)</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Cloud Base Ceiling:</span>
+                <span class="sensor-val">2,400 ft AGL (Unrestricted)</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Geomagnetic Solar Activity (KP Index):</span>
+                <span class="sensor-val">KP = 1.4 (Low • GPS Satellites Safe)</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">GPS Satellites Locked:</span>
+                <span class="sensor-val">18 Satellites (GLONASS + Galileo + GPS)</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           TAB 5: PILOT LOGBOOK & CERTS
+           =================================================================== -->
+      <section class="dash-tab-pane" id="tab-logbook">
+        <div class="dash-pane-header">
+          <div>
+            <h2 class="dash-pane-title">Certified Remote Pilot Official Logbook</h2>
+            <p class="dash-pane-desc">FAA Part 107 certifications, lifetime flight logs, digital endorsements, and flight safety records</p>
+          </div>
+          <button type="button" class="btn-dash-action-solid">📥 Export FAA Logbook (PDF)</button>
+        </div>
+
+        <div class="dash-two-col-grid">
+          
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Pilot Qualifications &amp; Credentials</h3>
+            </div>
+            <div class="pilot-controls-body">
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Certificate Number:</span>
+                <span class="sensor-val">FAA Part 107 Remote Pilot #98214-B</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Total Lifetime Flight Hours:</span>
+                <span class="sensor-val">1,428.5 Flight Hours</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Commercial Missions Logged:</span>
+                <span class="sensor-val">342 Missions Completed</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Safety Incident Record:</span>
+                <span class="sensor-val" style="color: #34d399; font-weight: 700;">Zero (0) Incidents Logged</span>
+              </div>
+              <div class="sensor-metric-row">
+                <span class="sensor-name">Recurrent Training Status:</span>
+                <span class="sensor-val">Current • Valid thru 2027</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title">Recent Commercial Flight Logs</h3>
+            </div>
+            <div class="fleet-table-wrap">
+              <table class="fleet-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Drone Unit</th>
+                    <th>Duration</th>
+                    <th>Mission Type</th>
+                    <th>Signature</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Today</strong></td>
+                    <td>STK-01</td>
+                    <td>42 min</td>
+                    <td>Powerline Inspection</td>
+                    <td><span class="status-chip active">Signed</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Yesterday</strong></td>
+                    <td>STK-04</td>
+                    <td>58 min</td>
+                    <td>Agricultural Mapping</td>
+                    <td><span class="status-chip active">Signed</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>28 Sep</strong></td>
+                    <td>STK-12</td>
+                    <td>35 min</td>
+                    <td>Thermal Building Audit</td>
+                    <td><span class="status-chip active">Signed</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>26 Sep</strong></td>
+                    <td>STK-09</td>
+                    <td>45 min</td>
+                    <td>Commercial Film Production</td>
+                    <td><span class="status-chip active">Signed</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Interactive 5-Tab Navigation Script & User Display -->
+  <script>
+    function switchDashTab(tabId) {
+      // Deactivate all tab buttons
+      document.querySelectorAll('.dash-tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+      });
+      // Deactivate all tab content panes
+      document.querySelectorAll('.dash-tab-pane').forEach(pane => {
+        pane.classList.toggle('active', pane.id === tabId);
+      });
+      // Close mobile menu if open
+      const sidebar = document.getElementById('dashSidebar');
+      if (sidebar) sidebar.classList.remove('mobile-open');
+    }
+
+    // Attach click listeners to all 5 tab buttons
+    const sidebar = document.getElementById('dashSidebar');
+    document.querySelectorAll('.dash-tab-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const tabId = this.getAttribute('data-tab');
+        switchDashTab(tabId);
+        if (sidebar && window.innerWidth <= 992) {
+          sidebar.classList.remove('mobile-open');
+        }
+      });
+    });
+
+    // Mobile Hamburger Toggle
+    const mobileToggle = document.getElementById('dashMobileToggle');
+    if (mobileToggle && sidebar) {
+      mobileToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        sidebar.classList.toggle('mobile-open');
+      });
+
+      document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 992 && sidebar.classList.contains('mobile-open')) {
+          if (!sidebar.contains(e.target) && !mobileToggle.contains(e.target)) {
+            sidebar.classList.remove('mobile-open');
+          }
+        }
+      });
+    }
+
+    // Dynamically display User Email and Name from Login / Signup
+    document.addEventListener('DOMContentLoaded', function() {
+      const storedName = localStorage.getItem('stackly_user_name');
+      const storedEmail = localStorage.getItem('stackly_user_email');
+
+      const nameToDisplay = storedName || 'Capt. Ryan Davis';
+      const emailToDisplay = storedEmail || 'ryan.davis@stackly.co';
+
+      const userNameEl = document.getElementById('dashUserName');
+      const topUserNameEl = document.getElementById('dashTopUserName');
+      const userEmailEl = document.getElementById('dashUserEmail');
+      const userAvatarEl = document.getElementById('dashUserAvatar');
+
+      if (userNameEl) userNameEl.textContent = nameToDisplay;
+      if (topUserNameEl) topUserNameEl.textContent = nameToDisplay;
+      if (userEmailEl) userEmailEl.textContent = emailToDisplay;
+
+      if (userAvatarEl && nameToDisplay) {
+        const initials = nameToDisplay.split(' ').map(n => n.charAt(0)).join('').substring(0, 2).toUpperCase();
+        userAvatarEl.textContent = initials || 'PL';
+      }
+    });
+
+    // Robust Logout Functionality
+    function handleLogout() {
+      if (confirm('Are you sure you want to log out of your Stackly dashboard?')) {
+        localStorage.removeItem('stackly_user_name');
+        localStorage.removeItem('stackly_user_email');
+        localStorage.removeItem('stackly_user_role');
+        window.location.href = 'login.html';
+      }
+    }
+  </script>
+
+  <!-- Main JavaScript -->
+  <script src="asset/js/main.js"></script>
+</body>
+</html>

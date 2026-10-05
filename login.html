@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Log In to Stackly - Access your drone fleet control dashboard, telemetry data, and aerial mission management.">
+  <title>Login | Stackly Drone Services</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="asset/css/style.css">
+</head>
+<body class="page-auth-clean">
+
+  <!-- ===================================================================
+       TOP AUTH HEADER WITH BRAND & BACK TO SITE OPTION
+       =================================================================== -->
+  <header class="auth-top-bar">
+    <div class="auth-top-container">
+      <a href="index.html" class="auth-brand-logo" aria-label="Stackly Home">
+        <img src="asset/images/stackly_.webp" alt="Stackly Logo" class="auth-logo-img">
+      </a>
+      <a href="index.html" class="auth-back-link" aria-label="Back to Stackly Site">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Back to site</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       LOGIN MAIN SECTION WITH 2 THEME ROLE DASHBOARD SWITCHER
+       =================================================================== -->
+  <section class="login-main-section auth-standalone-section">
+    <div class="container login-container">
+      <div class="login-split-grid">
+        
+        <!-- Left Column: Login Form -->
+        <div class="login-form-col">
+          <div class="login-form-wrapper">
+            
+            <!-- Inline Back to Site Navigation Link -->
+            <a href="index.html" class="auth-inline-back-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Back to site</span>
+            </a>
+
+            <div class="login-heading-wrap">
+              <h1 class="login-main-title">Welcome back!</h1>
+              <p class="login-main-subtitle">Enter your Credentials to access your account</p>
+            </div>
+
+            <!-- 2 Theme-Related Roles Selector for Dashboard Pages -->
+            <div class="auth-role-select-section">
+              <span class="auth-role-label">Select Dashboard Role:</span>
+              <div class="auth-role-toggle-grid">
+                
+                <!-- Role 1: Fleet Manager Dashboard -->
+                <label class="auth-role-btn active" id="roleBtnFleet">
+                  <input type="radio" name="dashboardRole" value="fleet" checked onchange="handleRoleSwitch('fleet')" class="role-radio">
+                  <div class="role-btn-inner">
+                    <span class="role-emoji">📊</span>
+                    <div class="role-text-wrap">
+                      <span class="role-name">Fleet Manager</span>
+                      <span class="role-sub">Enterprise Dashboard</span>
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Role 2: UAV Pilot Dashboard -->
+                <label class="auth-role-btn" id="roleBtnPilot">
+                  <input type="radio" name="dashboardRole" value="pilot" onchange="handleRoleSwitch('pilot')" class="role-radio">
+                  <div class="role-btn-inner">
+                    <span class="role-emoji">🕹️</span>
+                    <div class="role-text-wrap">
+                      <span class="role-name">UAV Pilot</span>
+                      <span class="role-sub">Flight Console</span>
+                    </div>
+                  </div>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- Login Form -->
+            <form class="login-auth-form" onsubmit="handleAuthSubmit(event)">
+              
+              <!-- Email Address Input -->
+              <div class="login-input-group">
+                <label for="loginEmail" class="login-field-label">Email address</label>
+                <input type="email" id="loginEmail" class="login-field-input" placeholder="Enter your email" required>
+              </div>
+
+              <!-- Password Input with Forgot Password -->
+              <div class="login-input-group">
+                <div class="login-label-row">
+                  <label for="loginPassword" class="login-field-label">Password</label>
+                  <a href="404.html" class="forgot-password-link">forgot password</a>
+                </div>
+                <input type="password" id="loginPassword" class="login-field-input" placeholder="Name" required>
+              </div>
+
+              <!-- Remember for 30 days Checkbox -->
+              <div class="login-checkbox-group">
+                <input type="checkbox" id="remember30Days" class="custom-login-checkbox">
+                <label for="remember30Days" class="login-checkbox-label">Remember for 30 days</label>
+              </div>
+
+              <!-- Primary Login Button -->
+              <div class="login-submit-group">
+                <button type="submit" class="btn-login-action" id="authSubmitBtn">Login to Dashboard</button>
+              </div>
+
+              <!-- "or" Divider -->
+              <div class="login-or-divider" aria-hidden="true">
+                <span class="divider-line"></span>
+                <span class="divider-text">or</span>
+                <span class="divider-line"></span>
+              </div>
+
+              <!-- Social Sign In Buttons (Google & Apple) -->
+              <div class="social-login-grid">
+                <!-- Google Sign In -->
+                <a href="404.html" class="btn-social-login btn-google-login">
+                  <svg class="social-icon-svg" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                  </svg>
+                  <span>Sign In with Google</span>
+                </a>
+
+                <!-- Apple Sign In -->
+                <a href="404.html" class="btn-social-login btn-apple-login">
+                  <svg class="social-icon-svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.63-.76 1.05-1.82.93-2.87-.91.04-2.02.61-2.67 1.37-.58.67-.99 1.74-.86 2.78 1.02.08 2.07-.53 2.6-1.28z"/>
+                  </svg>
+                  <span>Sign In with Apple</span>
+                </a>
+              </div>
+
+              <!-- Sign Up Link -->
+              <div class="login-signup-prompt">
+                <span class="signup-prompt-text">Don't have an account?</span>
+                <a href="signup.html" class="signup-link-btn">Sign Up</a>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+
+        <!-- Right Column: Hero Visual Card with Large Rounded Corners -->
+        <div class="login-visual-col">
+          <div class="login-image-card">
+            <img src="asset/images/login1.webp" alt="Drone flight hovering in blue sky" class="login-card-img">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Role Switcher & Submission Script -->
+  <script>
+    function handleRoleSwitch(role) {
+      document.getElementById('roleBtnFleet').classList.toggle('active', role === 'fleet');
+      document.getElementById('roleBtnPilot').classList.toggle('active', role === 'pilot');
+      
+      const submitBtn = document.getElementById('authSubmitBtn');
+      if (submitBtn) {
+        submitBtn.textContent = role === 'pilot' ? 'Login to Pilot Console' : 'Login to Fleet Dashboard';
+      }
+    }
+
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const emailInput = document.getElementById('loginEmail');
+      const emailVal = emailInput ? emailInput.value.trim() : '';
+      const selected = document.querySelector('input[name="dashboardRole"]:checked').value;
+      
+      let nameVal = '';
+      if (emailVal) {
+        // Derive clean display name from email (e.g. alex.morgan@stackly.co -> Alex Morgan)
+        const userPart = emailVal.split('@')[0];
+        nameVal = userPart.split(/[._-]/).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      } else {
+        nameVal = selected === 'pilot' ? 'Capt. Ryan Davis' : 'Alex Morgan';
+      }
+
+      localStorage.setItem('stackly_user_email', emailVal || (selected === 'pilot' ? 'ryan.davis@stackly.co' : 'alex.morgan@stackly.co'));
+      localStorage.setItem('stackly_user_name', nameVal);
+      localStorage.setItem('stackly_user_role', selected);
+
+      if (selected === 'pilot') {
+        window.location.href = 'dashboard-pilot.html';
+      } else {
+        window.location.href = 'dashboard-fleet.html';
+      }
+    }
+  </script>
+
+  <!-- JavaScript -->
+  <script src="asset/js/main.js"></script>
+</body>
+</html>

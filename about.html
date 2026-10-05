@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Stackly - Leading Autonomous Drone Services and Emerging Aerospace Solutions">
+  <title>About Us | Stackly Drone Services</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="asset/css/style.css">
+</head>
+<body class="page-about">
+
+  <!-- ===================================================================
+       HEADER / NAVIGATION (Matching Screenshot)
+       =================================================================== -->
+  <header class="site-header inner-header" id="siteHeader">
+    <div class="header-wrapper">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="Stackly Home">
+        <img src="asset/images/stackly_.webp" alt="Stackly Logo" class="brand-logo-img">
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="main-navigation" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">HOME</a></li>
+          <li><a href="about.html" class="nav-link active">ABOUT</a></li>
+          <li><a href="blog.html" class="nav-link">BLOG</a></li>
+          <li><a href="services.html" class="nav-link">SERVICES</a></li>
+          <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+          <a href="login.html" class="btn-mobile-login">LOG IN</a>
+          <a href="signup.html" class="btn-mobile-signup">SIGN UP</a>
+        </div>
+      </nav>
+
+      <!-- Right Header Actions (Shopping Cart + Log In Button) -->
+      <div class="header-right-actions">
+        <!-- Shopping Cart with badge 0 -->
+        <a href="login.html" class="cart-icon-btn" aria-label="View Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-count-badge">0</span>
+        </a>
+
+        <!-- Solid Blue Log In Button -->
+        <a href="login.html" class="btn-header-login">LOG IN</a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       MOBILE FULLSCREEN ROYAL BLUE DRAWER (Exact Screenshot Match)
+       =================================================================== -->
+  <div class="mobile-drawer-menu" id="mobileDrawerMenu" aria-hidden="true">
+    <div class="mobile-drawer-inner">
+      
+      <!-- Top Bar: Close Button at Top Left -->
+      <div class="mobile-drawer-header">
+        <button type="button" class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Brand Logo -->
+      <div class="mobile-drawer-brand">
+        <a href="index.html" aria-label="Stackly Home">
+          <img src="asset/images/stackly_.webp" alt="Stackly Logo" class="mobile-drawer-logo">
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="mobile-drawer-nav" aria-label="Mobile Navigation">
+        <ul class="mobile-drawer-links">
+          <li><a href="index.html" class="mobile-nav-item">Home</a></li>
+          <li><a href="about.html" class="mobile-nav-item active">About</a></li>
+          <li><a href="blog.html" class="mobile-nav-item">Blog</a></li>
+          <li><a href="services.html" class="mobile-nav-item">Service</a></li>
+          <li><a href="contact.html" class="mobile-nav-item">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Contact Info Section -->
+      <div class="mobile-drawer-info">
+        <p class="mobile-info-address">
+          5961 &nbsp;Santa Fe Ave, Huntington Park, CA 90255, USA
+        </p>
+        <div class="mobile-info-contacts">
+          <div class="mobile-info-phones">
+            <a href="tel:+18003414141">+1 800 341 41 41</a>
+            <a href="tel:+18008346274">+1 800 834 62 74</a>
+          </div>
+          <a href="mailto:info@quadron.co" class="mobile-info-email">info@quadron.co</a>
+        </div>
+      </div>
+
+      <!-- Social Media Outlined Circles -->
+      <div class="mobile-drawer-socials">
+        <a href="https://facebook.com" class="mobile-social-circle" aria-label="Facebook" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a href="https://twitter.com" class="mobile-social-circle" aria-label="Twitter" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+          </svg>
+        </a>
+        <a href="https://instagram.com" class="mobile-social-circle" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Bottom Action Buttons: Log In & Make Order -->
+      <div class="mobile-drawer-bottom">
+        <div class="mobile-drawer-actions-grid">
+          <a href="login.html" class="btn-mobile-drawer-login">LOG IN</a>
+          <a href="signup.html" class="btn-mobile-make-order">SIGN UP</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       ABOUT HERO BANNER SECTION (Matching Exact Screenshot)
+       =================================================================== -->
+  <section class="about-hero-section">
+    <div class="about-banner-wrapper">
+      <img src="asset/images/hero-slide-4.webp" alt="Stackly Drone Pilot and Aircraft" class="about-banner-img">
+      
+      <!-- Overlapping Royal Blue Card on Left -->
+      <div class="about-hero-card">
+        <span class="about-hero-tag">Stackly</span>
+        <h1 class="about-hero-title">About Stackly</h1>
+        <div class="about-hero-divider"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       WHO WE ARE SECTION (Matching Exact Screenshot)
+       =================================================================== -->
+  <section class="who-we-are-section">
+    <div class="container who-we-are-grid">
+      
+      <!-- Left Column: Text & Large Stackly Wordmark -->
+      <div class="who-we-are-left">
+        <span class="who-subtitle">— About</span>
+        <h2 class="who-title">Who we are</h2>
+        
+        <p class="who-lead-text">
+          Port Jackson shark, Beluga sturgeon bandfish needlefish titan triggerfish, powen dorado porbeagle shark Blind shark.
+        </p>
+
+        <p class="who-body-text">
+          Wels catfish, boarfish titan triggerfish orangestriped triggerfish dwarf gourami sweeper yellow weaver. Mustache triggerfish, Menhaden temperate ocean-bass North American darter scythe butterfish. Luminous hake, Indian mul pike Siamese fighting fish, weaverfish gulper. Dogtail, Sargassum fish loach Blind shark arowana Pacific saury thresherfish.
+        </p>
+
+        <p class="who-body-text">
+          Blue gourami trout cod Black angelfish basa knifefish brook lamprey. Giant sleeper Black rascatoni bandip sacker wreck.
+        </p>
+
+        <div class="who-brand-wordmark">
+          Stackly.
+        </div>
+      </div>
+
+      <!-- Right Column: Forest Road Aerial Image with Center Circle & Offset Blue Card -->
+      <div class="who-we-are-right">
+        <div class="about-media-stack">
+          <!-- Offset Blue Background Card -->
+          <div class="about-media-blue-bg"></div>
+          
+          <!-- Image Card -->
+          <div class="about-media-card">
+            <img src="asset/images/Component 2 (1).webp" alt="Aerial Winding Road in Forest" class="about-media-img">
+            
+            <!-- Center Circle Button -->
+            <div class="about-media-circle-btn"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       ABOUT STATS / METRICS COUNTERS SECTION (Matching Exact Screenshot)
+       =================================================================== -->
+  <section class="about-stats-section">
+    <div class="container about-stats-grid">
+      
+      <!-- Metric 1: Delivery Packages -->
+      <div class="stat-col">
+        <span class="stat-category">Delivery Packages</span>
+        <div class="stat-number-wrap">
+          <span class="stat-big-num">6,500</span><span class="stat-unit">m</span>
+        </div>
+        <p class="stat-desc">
+          Duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore eu fugiat nulla.
+        </p>
+      </div>
+
+      <!-- Metric 2: Satisfied -->
+      <div class="stat-col">
+        <span class="stat-category">Satisfied</span>
+        <div class="stat-number-wrap">
+          <span class="stat-big-num">700</span><span class="stat-unit">clients</span>
+        </div>
+        <p class="stat-desc">
+          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.
+        </p>
+      </div>
+
+      <!-- Metric 3: Covered -->
+      <div class="stat-col">
+        <span class="stat-category">Covered</span>
+        <div class="stat-number-wrap">
+          <span class="stat-big-num">57</span><span class="stat-unit">countries</span>
+        </div>
+        <p class="stat-desc">
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       OUR STAFF / TEAM SECTION (Matching Exact Screenshot)
+       =================================================================== -->
+  <section class="about-team-section">
+    <div class="container">
+      <div class="team-section-header">
+        <span class="team-subtitle">— Our Staff</span>
+        <h2 class="team-title">Meat out Team</h2>
+      </div>
+
+      <div class="team-grid">
+        <!-- Member 1 -->
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <img src="asset/images/Container.webp" alt="Christianne Abrahams" class="team-img">
+            <div class="team-fingerprint-watermark">
+             
+            </div>
+          </div>
+          <div class="team-info">
+            <span class="team-role">Chief Executive Officer</span>
+            <h3 class="team-name">Christianne Abrahams</h3>
+          </div>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <img src="asset/images/Container (1).webp" alt="Gwen Arkwright" class="team-img">
+            <div class="team-fingerprint-watermark">
+             
+            </div>
+          </div>
+          <div class="team-info">
+            <span class="team-role">Chief Operating Officer</span>
+            <h3 class="team-name">Gwen Arkwright</h3>
+          </div>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <img src="asset/images/Container (6).webp" alt="Jaclyn Lynn" class="team-img">
+            <div class="team-fingerprint-watermark">
+             
+            </div>
+          </div>
+          <div class="team-info">
+            <span class="team-role">Chief Financial Officer</span>
+            <h3 class="team-name">Jaclyn Lynn</h3>
+          </div>
+        </div>
+
+        <!-- Member 4 -->
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <img src="asset/images/Container (3).webp" alt="Pearlie Batts" class="team-img">
+            <div class="team-fingerprint-watermark">
+             
+            </div>
+          </div>
+          <div class="team-info">
+            <span class="team-role">Secretary</span>
+            <h3 class="team-name">Pearlie Batts</h3>
+          </div>
+        </div>
+
+        <!-- Member 5 -->
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <img src="asset/images/Container (5).webp" alt="Cameron Davids" class="team-img">
+            <div class="team-fingerprint-watermark">
+             
+            </div>
+          </div>
+          <div class="team-info">
+            <span class="team-role">Sales Director</span>
+            <h3 class="team-name">Cameron Davids</h3>
+          </div>
+        </div>
+
+        <!-- Member 6 -->
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <img src="asset/images/Container (4).webp" alt="Caelie Britton" class="team-img">
+            <div class="team-fingerprint-watermark">
+             
+            </div>
+          </div>
+          <div class="team-info">
+            <span class="team-role">Management</span>
+            <h3 class="team-name">Caelie Britton</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       AWARDS / PROGRESS SECTION (Matching Exact Screenshot)
+       =================================================================== -->
+  <section class="about-progress-section">
+    <div class="container">
+      <div class="progress-section-header">
+        <span class="progress-subtitle">— Awards</span>
+        <h2 class="progress-title">Our progress</h2>
+      </div>
+
+      <div class="progress-carousel-container">
+        <!-- Left Arrow -->
+        <button class="progress-arrow-btn prev-btn" id="prevProgress" aria-label="Previous Awards">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+
+        <!-- Cards Track -->
+        <div class="progress-track-wrapper">
+          <div class="progress-grid" id="progressTrack">
+            <!-- Card 1 -->
+            <div class="progress-item">
+              <div class="progress-frame">
+                <div class="progress-logo-disruption">
+                  <span>DIS</span>
+                  <span>RUP</span>
+                  <span>TION</span>
+                </div>
+              </div>
+              <div class="progress-meta">
+                <span class="progress-year">2016</span>
+                <h4 class="progress-name">Disruption</h4>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="progress-item">
+              <div class="progress-frame">
+                <div class="progress-logo-yourname">
+                  <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="18" cy="18" r="4"/>
+                    <path d="M12 12L7 7M24 12L29 7M12 24L7 29M24 24L29 29"/>
+                    <circle cx="6" cy="6" r="3"/>
+                    <circle cx="30" cy="6" r="3"/>
+                    <circle cx="6" cy="30" r="3"/>
+                    <circle cx="30" cy="30" r="3"/>
+                  </svg>
+                  <div class="yourname-text-subtle">
+                    <strong>YOURNAME</strong>
+                    <small>PHOTOGRAPHY</small>
+                  </div>
+                </div>
+              </div>
+              <div class="progress-meta">
+                <span class="progress-year">2017</span>
+                <h4 class="progress-name">Quadron 4000</h4>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="progress-item">
+              <div class="progress-frame">
+                <div class="progress-logo-bee-box">
+                  <span>be9</span>
+                </div>
+              </div>
+              <div class="progress-meta">
+                <span class="progress-year">2018</span>
+                <h4 class="progress-name">99d Award</h4>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="progress-item">
+              <div class="progress-frame">
+                <div class="progress-logo-yourname">
+                  <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="18" cy="18" r="4"/>
+                    <path d="M12 12L7 7M24 12L29 7M12 24L7 29M24 24L29 29"/>
+                    <circle cx="6" cy="6" r="3"/>
+                    <circle cx="30" cy="6" r="3"/>
+                    <circle cx="6" cy="30" r="3"/>
+                    <circle cx="30" cy="30" r="3"/>
+                  </svg>
+                  <div class="yourname-text-subtle">
+                    <strong>YOURNAME</strong>
+                    <small>PHOTOGRAPHY</small>
+                  </div>
+                </div>
+              </div>
+              <div class="progress-meta">
+                <span class="progress-year">2019</span>
+                <h4 class="progress-name">Quadron 4000</h4>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="progress-item">
+              <div class="progress-frame">
+                <div class="progress-logo-disruption">
+                  <span>AERO</span>
+                  <span>VISION</span>
+                  <span>TECH</span>
+                </div>
+              </div>
+              <div class="progress-meta">
+                <span class="progress-year">2020</span>
+                <h4 class="progress-name">AeroVision X</h4>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="progress-item">
+              <div class="progress-frame">
+                <div class="progress-logo-bee-box">
+                  <span>UAV</span>
+                </div>
+              </div>
+              <div class="progress-meta">
+                <span class="progress-year">2021</span>
+                <h4 class="progress-name">Autonomous Wings</h4>
+              </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="progress-item">
+              <div class="progress-frame">
+                <div class="progress-logo-yourname">
+                  <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <polygon points="18,4 32,18 18,32 4,18"/>
+                    <circle cx="18" cy="18" r="5"/>
+                  </svg>
+                  <div class="yourname-text-subtle">
+                    <strong>SKYMATRIX</strong>
+                    <small>INNOVATION</small>
+                  </div>
+                </div>
+              </div>
+              <div class="progress-meta">
+                <span class="progress-year">2022</span>
+                <h4 class="progress-name">SkyMatrix Pioneer</h4>
+              </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="progress-item">
+              <div class="progress-frame">
+                <div class="progress-logo-bee-box" style="background:#283891;">
+                  <span style="color:#ffffff;">TOP1</span>
+                </div>
+              </div>
+              <div class="progress-meta">
+                <span class="progress-year">2023</span>
+                <h4 class="progress-name">Global UAV Prize</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Arrow -->
+        <button class="progress-arrow-btn next-btn" id="nextProgress" aria-label="Next Awards">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       FOOTER SECTION (Matching Exact Screenshot)
+       =================================================================== -->
+  <footer class="site-footer" id="contact">
+    <div class="container footer-main">
+      <div class="footer-grid">
+        <!-- Col 1: Logo & Contact Info & Socials -->
+        <div class="footer-col footer-about-col">
+          <div class="footer-logo-wrap">
+            <a href="index.html" class="footer-logo">
+              <img src="asset/images/stackly_.webp" alt="Stackly Logo" class="footer-logo-img">
+            </a>
+          </div>
+          <p class="footer-address">
+            5961 Santa Fe Ave,Huntington Park, CA 90255, USA
+          </p>
+          <p class="footer-phone">
+            +1 800 341 41 41 +1 800 834 62 74
+          </p>
+          <p class="footer-email">
+            <a href="mailto:info@Stackly.co">info@Stackly.co</a>
+          </p>
+          <div class="footer-social-links">
+            <a href="404.html" class="footer-social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="404.html" class="footer-social-btn" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+              </svg>
+            </a>
+            <a href="404.html" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Useful Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Useful Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="404.html">Documents</a></li>
+            <li><a href="404.html">Products</a></li>
+            <li><a href="404.html">Quadrone Shop</a></li>
+            <li><a href="404.html">Blog and News</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Main Menu -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Main Menu</h4>
+          <ul class="footer-links-list">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="index.html#blog">Blogs</a></li>
+            <li><a href="index.html#vision">Projects</a></li>
+            <li><a href="index.html#contact">Contacts</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Additional Info -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Additional Info</h4>
+          <ul class="footer-links-list">
+            <li><a href="404.html">Become an Affiliate</a></li>
+            <li><a href="404.html">About Drone</a></li>
+            <li><a href="404.html">Community Meetups</a></li>
+            <li><a href="404.html">Why Buy With Us?</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Navigation -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="404.html">Become an Affiliate</a></li>
+            <li><a href="404.html">About Drone</a></li>
+            <li><a href="404.html">Community Meetups</a></li>
+            <li><a href="404.html">Why Buy With Us?</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Nav Bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <div class="footer-copyright">
+          Copyrights 2026 &copy; <span class="copyright-brand">Stackly</span>
+        </div>
+        <ul class="footer-bottom-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">Pages</a></li>
+          <li><a href="index.html#blog">Blog</a></li>
+          <li><a href="index.html#services">Service</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="asset/js/main.js"></script>
+</body>
+</html>

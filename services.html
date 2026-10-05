@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stackly Services - Industry-leading Drone Aerial Inspections, Mapping, and Logistics">
+  <title>Services | Stackly Drone Services</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="asset/css/style.css">
+</head>
+<body class="page-services">
+
+  <!-- ===================================================================
+       HEADER / NAVIGATION (Matching Screenshot)
+       =================================================================== -->
+  <header class="site-header inner-header" id="siteHeader">
+    <div class="header-wrapper">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="Stackly Home">
+        <img src="asset/images/stackly_.webp" alt="Stackly Logo" class="brand-logo-img">
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="main-navigation" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">HOME</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT</a></li>
+          <li><a href="blog.html" class="nav-link">BLOG</a></li>
+          <li><a href="services.html" class="nav-link active">SERVICES</a></li>
+          <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+          <a href="login.html" class="btn-mobile-login">LOG IN</a>
+          <a href="signup.html" class="btn-mobile-signup">SIGN UP</a>
+        </div>
+      </nav>
+
+      <!-- Right Header Actions (Shopping Cart + Log In Button) -->
+      <div class="header-right-actions">
+        <!-- Shopping Cart with badge 0 -->
+        <a href="login.html" class="cart-icon-btn" aria-label="View Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-count-badge">0</span>
+        </a>
+
+        <!-- Solid Blue Log In Button -->
+        <a href="login.html" class="btn-header-login">LOG IN</a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       MOBILE FULLSCREEN ROYAL BLUE DRAWER (Exact Screenshot Match)
+       =================================================================== -->
+  <div class="mobile-drawer-menu" id="mobileDrawerMenu" aria-hidden="true">
+    <div class="mobile-drawer-inner">
+      
+      <!-- Top Bar: Close Button at Top Left -->
+      <div class="mobile-drawer-header">
+        <button type="button" class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Brand Logo -->
+      <div class="mobile-drawer-brand">
+        <a href="index.html" aria-label="Stackly Home">
+          <img src="asset/images/stackly_.webp" alt="Stackly Logo" class="mobile-drawer-logo">
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="mobile-drawer-nav" aria-label="Mobile Navigation">
+        <ul class="mobile-drawer-links">
+          <li><a href="index.html" class="mobile-nav-item">Home</a></li>
+          <li><a href="about.html" class="mobile-nav-item">About</a></li>
+          <li><a href="blog.html" class="mobile-nav-item">Blog</a></li>
+          <li><a href="services.html" class="mobile-nav-item active">Service</a></li>
+          <li><a href="contact.html" class="mobile-nav-item">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Contact Info Section -->
+      <div class="mobile-drawer-info">
+        <p class="mobile-info-address">
+          5961 &nbsp;Santa Fe Ave, Huntington Park, CA 90255, USA
+        </p>
+        <div class="mobile-info-contacts">
+          <div class="mobile-info-phones">
+            <a href="tel:+18003414141">+1 800 341 41 41</a>
+            <a href="tel:+18008346274">+1 800 834 62 74</a>
+          </div>
+          <a href="mailto:info@quadron.co" class="mobile-info-email">info@quadron.co</a>
+        </div>
+      </div>
+
+      <!-- Social Media Outlined Circles -->
+      <div class="mobile-drawer-socials">
+        <a href="https://facebook.com" class="mobile-social-circle" aria-label="Facebook" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a href="https://twitter.com" class="mobile-social-circle" aria-label="Twitter" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+          </svg>
+        </a>
+        <a href="https://instagram.com" class="mobile-social-circle" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Bottom Action Buttons: Log In & Make Order -->
+      <div class="mobile-drawer-bottom">
+        <div class="mobile-drawer-actions-grid">
+          <a href="login.html" class="btn-mobile-drawer-login">LOG IN</a>
+           <a href="signup.html" class="btn-mobile-make-order">SIGN UP</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       SERVICES HERO BANNER SECTION (Matching Exact Screenshot)
+       =================================================================== -->
+  <section class="services-hero-section">
+    <div class="services-banner-wrapper">
+      <img src="asset/images/services-banner.webp" alt="Drone Aircraft Closeup" class="services-banner-img">
+      
+      <!-- Overlapping Royal Blue Card on Left -->
+      <div class="services-hero-card">
+        <span class="services-hero-tag">Stackly</span>
+        <h1 class="services-hero-title">Awesome Services</h1>
+        <div class="services-hero-divider"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       AWESOME SERVICES GRID & TEXT ROW SECTION (Matching Screenshot)
+       =================================================================== -->
+  <section class="services-main-page-section">
+    <div class="container">
+      
+      <!-- 6 Service Feature Cards Grid -->
+      <div class="services-page-grid">
+        
+        <!-- Card 1: Delivery -->
+        <div class="service-page-card">
+          <div class="service-page-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#283891" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 16L24 10L36 16M24 10V24"/>
+              <path d="M12 16L7 11M36 16L41 11M12 24L7 29M36 24L41 29"/>
+              <circle cx="7" cy="11" r="3"/><circle cx="41" cy="11" r="3"/>
+              <circle cx="7" cy="29" r="3"/><circle cx="41" cy="29" r="3"/>
+              <rect x="16" y="24" width="16" height="14" rx="2"/>
+              <line x1="24" y1="24" x2="24" y2="38"/>
+            </svg>
+          </div>
+          <h3 class="service-page-title">Delivery</h3>
+          <p class="service-page-desc">
+            Triplefin blenny gibberfish ridgehead stonecat Australian grayling. Glass knifefish Bombay duck Molly Quillfish
+          </p>
+          <a href="404.html" class="service-details-btn">
+            <span class="circle-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </span>
+            <span class="btn-text">DETAILS</span>
+          </a>
+        </div>
+
+        <!-- Card 2: News & Media -->
+        <div class="service-page-card">
+          <div class="service-page-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#283891" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="18" y="8" width="12" height="22" rx="6"/>
+              <path d="M12 20C12 26.6 17.4 32 24 32C30.6 32 36 26.6 36 20"/>
+              <line x1="24" y1="32" x2="24" y2="40"/>
+              <line x1="16" y1="40" x2="32" y2="40"/>
+              <path d="M8 14C6 16.5 6 19.5 8 22M40 14C42 16.5 42 19.5 40 22"/>
+            </svg>
+          </div>
+          <h3 class="service-page-title">News & Media</h3>
+          <p class="service-page-desc">
+            Glass knifefish Bombay duck Molly Miller Quillfish stargazer collared dogfish silver hake. Temperate bass trout filefish medaka
+          </p>
+          <a href="404.html" class="service-details-btn">
+            <span class="circle-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </span>
+            <span class="btn-text">DETAILS</span>
+          </a>
+        </div>
+
+        <!-- Card 3: Public Safety -->
+        <div class="service-page-card">
+          <div class="service-page-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#283891" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M24 6L38 12V24C38 33 24 42 24 42C24 42 10 33 10 24V12L24 6Z"/>
+              <circle cx="24" cy="23" r="5"/>
+              <path d="M24 14V18M24 28V32M15 23H19M29 23H33"/>
+            </svg>
+          </div>
+          <h3 class="service-page-title">Public Safety</h3>
+          <p class="service-page-desc">
+            Temperate bass trout filefish medaka trout perch herring devil ray sleeper dusky grouper sand diver. Garibaldi giant danio
+          </p>
+          <a href="404.html" class="service-details-btn">
+            <span class="circle-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </span>
+            <span class="btn-text">DETAILS</span>
+          </a>
+        </div>
+
+        <!-- Card 4: Film & Production -->
+        <div class="service-page-card">
+          <div class="service-page-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#283891" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="8" y="16" width="22" height="18" rx="3"/>
+              <path d="M30 23L40 16V34L30 27"/>
+              <circle cx="16" cy="11" r="4"/>
+              <circle cx="24" cy="11" r="4"/>
+            </svg>
+          </div>
+          <h3 class="service-page-title">Film & Production</h3>
+          <p class="service-page-desc">
+            Quillfish stargazer collared dogfish silver hake. Temperate bass trout filefish medaka trout perch herringdevil ray sleeper
+          </p>
+          <a href="404.html" class="service-details-btn">
+            <span class="circle-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </span>
+            <span class="btn-text">DETAILS</span>
+          </a>
+        </div>
+
+        <!-- Card 5: Inspection -->
+        <div class="service-page-card">
+          <div class="service-page-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#283891" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="10" y="8" width="28" height="32" rx="2"/>
+              <line x1="16" y1="16" x2="32" y2="16"/>
+              <line x1="16" y1="24" x2="24" y2="24"/>
+              <circle cx="28" cy="28" r="7"/>
+              <line x1="33" y1="33" x2="39" y2="39"/>
+            </svg>
+          </div>
+          <h3 class="service-page-title">Inspection</h3>
+          <p class="service-page-desc">
+            Bass trout filefish medaka trout perch herringdevil ray sleeper dusky grouper sand diver. Garibaldi giant danio ziege
+          </p>
+          <a href="404.html" class="service-details-btn">
+            <span class="circle-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </span>
+            <span class="btn-text">DETAILS</span>
+          </a>
+        </div>
+
+        <!-- Card 6: Construction -->
+        <div class="service-page-card">
+          <div class="service-page-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#283891" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M28 10L36 18M38 12L34 16"/>
+              <path d="M30 12C28 10 24 10 21 13L10 24C8.5 25.5 8.5 28 10 29.5L18.5 38C20 39.5 22.5 39.5 24 38L35 27C38 24 38 20 36 18"/>
+              <path d="M12 36L8 40M16 40L14 42"/>
+            </svg>
+          </div>
+          <h3 class="service-page-title">Construction</h3>
+          <p class="service-page-desc">
+            Grouper sand diver. Garibaldi giant danio ziege Siamese fighting fish collared dogfish dusky grouper sand dogfish.
+          </p>
+          <a href="404.html" class="service-details-btn">
+            <span class="circle-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </span>
+            <span class="btn-text">DETAILS</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Two-Column Description Row at Bottom -->
+      <div class="services-page-bottom-row">
+        <div class="services-page-lead-text">
+          We provide expert inspection services for your organization's mission critical assets using drone technology.
+        </div>
+        <div class="services-page-body-text">
+          Triplefin blenny gibberfish ridgehead stonecat Australian grayling. Glass knifefish Bombay duck Molly Miller Quillfish stargazer collared dogfish silver hake. Temperate bass trout filefish medaka trout perch herring devil ray sleeper dusky grouper sand diver. Garibaldi giant danio ziege Siamese fighting fish collared dogfish.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       EFFICIENCY AND OPTIMIZATION (UAV PLATFORM) SECTION
+       =================================================================== -->
+  <section class="services-optimization-section">
+    <div class="container services-opt-grid">
+      
+      <!-- Left: Laptop Flight Radar UI Mockup -->
+      <div class="opt-laptop-wrapper">
+        <img src="asset/images/img_01.webp" alt="UAV Platform Radar Navigation Platform" class="opt-laptop-img">
+      </div>
+
+      <!-- Right: Text Content & Checklist -->
+      <div class="opt-text-content">
+        <span class="opt-subtitle">— Uav Platform</span>
+        <h2 class="opt-title">Efficiency and Optimization</h2>
+        
+        <p class="opt-desc">
+          Temperate bass trout filefish medaka trout perch herring devil ray sleeper dusky grouper sand diver. Garibaldi giant danio ziege Siamese fighting fish collared dogfish
+        </p>
+
+        <ul class="opt-features-list">
+          <li class="opt-feature-item">
+            <span class="opt-circle-icon"></span>
+            <span class="opt-feature-text">Amberjack emperor. Pelagic</span>
+          </li>
+          <li class="opt-feature-item">
+            <span class="opt-circle-icon"></span>
+            <span class="opt-feature-text">Cod morid cod Raccoon butterfly fish</span>
+          </li>
+          <li class="opt-feature-item">
+            <span class="opt-circle-icon"></span>
+            <span class="opt-feature-text">Gulper cuchia cow shark jelly fish</span>
+          </li>
+        </ul>
+
+        <div class="opt-btn-wrap">
+          <a href="404.html" class="opt-more-btn">
+            <span class="circle-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </span>
+            <span class="btn-text">MORE</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       CARE REFRESH & QUADCOPTER OPERATION (2 ALTERNATING ROWS)
+       =================================================================== -->
+  <section class="services-features-alternating-section">
+    <div class="container">
+      
+      <!-- Top Centered Intro Text -->
+      <div class="services-features-intro-text">
+        Footballfish bottlenose steelhead eel sawtooth eel South American Lungfish marine hatchetfish. Sabertooth Ganges shark whalefish clown triggerfish, Rabbitfish hairtail tarwhine vendace.
+      </div>
+
+      <!-- Feature Row 1: Text Left, Image Right -->
+      <div class="services-alt-row">
+        <div class="alt-text-col">
+          <span class="alt-tag">— 01</span>
+          <h2 class="alt-title">Care Refresh –<br>Protect Your Purchase</h2>
+          <p class="alt-desc">
+            Garden eel labyrinth fish; round stingray. Fathead sculpin hawkfish mudskipper bonytail chub ruffe barbeled dragonfish yellowbelly tail catfish, spotted danio.
+          </p>
+          <a href="404.html" class="alt-discover-btn">
+            <span class="circle-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </span>
+            <span class="btn-text">DISCOVER</span>
+          </a>
+        </div>
+        <div class="alt-media-col">
+          <div class="alt-img-wrap">
+            <img src="asset/images/chessbox_img_01.jpg.webp" alt="Care Refresh Drone on Runway" class="alt-feature-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Row 2: Image Left, Text Right -->
+      <div class="services-alt-row row-reverse">
+        <div class="alt-media-col">
+          <div class="alt-img-wrap">
+            <img src="asset/images/chessbox_img_02.jpg.webp" alt="Quadcopter Flight in Sky" class="alt-feature-img">
+          </div>
+        </div>
+        <div class="alt-text-col">
+          <span class="alt-tag">— 02</span>
+          <h2 class="alt-title">When the quadcopter<br>is first switched on</h2>
+          <p class="alt-desc">
+            Garden eel labyrinth fish; round stingray. Fathead sculpin hawkfish mudskipper bonytail chub ruffe barbeled dragonfish yellowbelly tail catfish, spotted danio.
+          </p>
+          <a href="404.html" class="alt-discover-btn">
+            <span class="circle-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </span>
+            <span class="btn-text">DISCOVER</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       STAY IN TOUCH / CONTACT FORM SECTION (Royal Blue Background)
+       =================================================================== -->
+  <section class="services-contact-section" id="contact-form">
+    <div class="container services-contact-container">
+      
+      <!-- Section Header -->
+      <div class="services-contact-header">
+        <span class="contact-subtitle">— Contact us</span>
+        <h2 class="contact-title">Stay in touch</h2>
+      </div>
+
+      <!-- 2-Column Form -->
+      <form class="services-contact-form" action="#" method="POST" onsubmit="event.preventDefault();">
+        <div class="form-columns-grid">
+          
+          <!-- Left Column Inputs -->
+          <div class="form-left-col">
+            <div class="form-input-group">
+              <input type="text" class="contact-input-field" placeholder="First name *" pattern="[A-Za-z\s]+" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" required>
+            </div>
+            <div class="form-input-group">
+              <input type="text" class="contact-input-field" placeholder="Last name *" pattern="[A-Za-z\s]+" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" required>
+            </div>
+            <div class="form-input-group">
+              <input type="email" class="contact-input-field" placeholder="Email">
+            </div>
+            <div class="form-input-group">
+              <div class="select-dropdown-wrap">
+                <select class="contact-select-field" required>
+                  <option value="" disabled selected hidden>Industry *</option>
+                  <option value="inspection">Infrastructure Inspection</option>
+                  <option value="agriculture">Precision Agriculture</option>
+                  <option value="media">News & Media Broadcasts</option>
+                  <option value="safety">Public Safety & Rescue</option>
+                  <option value="construction">Construction & Mapping</option>
+                </select>
+                <span class="select-arrow-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column Message -->
+          <div class="form-right-col">
+            <textarea class="contact-textarea-field" placeholder="Message"></textarea>
+          </div>
+
+        </div>
+
+        <!-- Centered Send Button -->
+        <div class="form-submit-wrap">
+          <button type="submit" class="btn-contact-send">SEND</button>
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       FOOTER SECTION (Matching Exact Screenshot)
+       =================================================================== -->
+  <footer class="site-footer" id="contact">
+    <div class="container footer-main">
+      <div class="footer-grid">
+        <!-- Col 1: Logo & Contact Info & Socials -->
+        <div class="footer-col footer-about-col">
+          <div class="footer-logo-wrap">
+            <a href="index.html" class="footer-logo">
+              <img src="asset/images/stackly_.webp" alt="Stackly Logo" class="footer-logo-img">
+            </a>
+          </div>
+          <p class="footer-address">
+            5961 Santa Fe Ave,Huntington Park, CA 90255, USA
+          </p>
+          <p class="footer-phone">
+            +1 800 341 41 41 +1 800 834 62 74
+          </p>
+          <p class="footer-email">
+            <a href="mailto:info@Stackly.co">info@Stackly.co</a>
+          </p>
+          <div class="footer-social-links">
+            <a href="404.html" class="footer-social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="404.html" class="footer-social-btn" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+              </svg>
+            </a>
+            <a href="404.html" class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Useful Links -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Useful Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="404.html">Documents</a></li>
+            <li><a href="404.html">Products</a></li>
+            <li><a href="404.html">Quadrone Shop</a></li>
+            <li><a href="404.html">Blog and News</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Main Menu -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Main Menu</h4>
+          <ul class="footer-links-list">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Blogs</a></li>
+            <li><a href="services.html">Projects</a></li>
+            <li><a href="index.html#contact">Contacts</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Additional Info -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Additional Info</h4>
+          <ul class="footer-links-list">
+            <li><a href="404.html">Become an Affiliate</a></li>
+            <li><a href="404.html">About Drone</a></li>
+            <li><a href="404.html">Community Meetups</a></li>
+            <li><a href="404.html">Why Buy With Us?</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Navigation -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="404.html">Become an Affiliate</a></li>
+            <li><a href="404.html">About Drone</a></li>
+            <li><a href="404.html">Community Meetups</a></li>
+            <li><a href="404.html">Why Buy With Us?</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Nav Bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <div class="footer-copyright">
+          Copyrights 2026 &copy; <span class="copyright-brand">Stackly</span>
+        </div>
+        <ul class="footer-bottom-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">Pages</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="services.html">Service</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="asset/js/main.js"></script>
+</body>
+</html>
